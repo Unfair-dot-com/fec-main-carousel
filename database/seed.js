@@ -1,17 +1,8 @@
 const mongoose = require('mongoose');
 const db = require('./database.js').db;
+const Picture = require('./database.js').Picture;
 
 const baseURL = 'https://fec-hrr47.s3.us-east-2.amazonaws.com';
-
-//open a connection to the database
-const picturesSchema = new mongoose.Schema({
-  productId: Number,
-  index: Number,
-  fullSizeURL: String
-});
-
-//define the model
-const Picture = mongoose.model('Picture', picturesSchema);
 
 var randNumGenerator = (min, max) => {
   return Math.floor((Math.random() * max) + min);
@@ -48,7 +39,7 @@ for (var index = 1; index < 10; index++) {
   //define a new document
   var picture = new Picture({
     'productId': 0,
-    'index': index,
+    'index': index - 1,
     'fullSizeURL': `${baseURL}/sunMoon${paddedID}.jpg`
   });
 
