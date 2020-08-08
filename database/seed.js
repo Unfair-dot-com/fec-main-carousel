@@ -13,15 +13,19 @@ const picturesSchema = new mongoose.Schema({
 //define the model
 const Picture = mongoose.model('Picture', picturesSchema);
 
+var randNumGenerator = (min, max) => {
+  return Math.floor((Math.random() * max) + min);
+}
+
 //randomize pictures
 //iterate through all productIDs, 1-99
 for (var id = 1; id < 100; id++ ) {
-  //choose a random number of pictures for the product, min 5, max 10
-  var maxIndex = Math.floor((Math.random() * 6) + 5);
+  //choose a random number of pictures for the product, min 5, max 10 inclusive
+  var maxIndex = randNumGenerator(5, 11);
   //then iterate through all indicies
   for (var index = 0; index < maxIndex; index++ ) {
-    //generate a padded, random picture id between 1 and 40
-    var paddedID = Math.floor((Math.random() * 40) + 1).toString().padStart(5,0);
+    //generate a padded, random picture id between 1 and 40 inclusive
+    var paddedID = randNumGenerator(1, 41).toString().padStart(5,0);
     //define a new document
     var picture = new Picture({
       'productId': id,
@@ -31,8 +35,7 @@ for (var id = 1; id < 100; id++ ) {
 
     //save to the database
     picture.save((err, picture) => {
-      if (err) return console.log('an error occurred writing to database: ', err);
-      //console.log('record saved to DB: ', picture.productId, picture.index);
+      if (err) console.log('an error occurred writing to database: ', err);
     })
   }
 }
@@ -52,8 +55,5 @@ for (var index = 1; index < 10; index++) {
   //save to the database
   picture.save((err, picture) => {
     if (err) return console.log('an error occurred writing to database: ', err);
-    console.log('record saved to DB: ', picture);
   })
 }
-
-
