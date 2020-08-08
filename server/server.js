@@ -1,4 +1,6 @@
 const express = require('express');
+const database = require('../database/database.js');
+
 const app = express();
 const port = 3001;
 
@@ -10,7 +12,14 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({extended: true}));
 
 app.get('/:productId', (req, res) => {
-  res.send("Hello " + req.params.productId);
+  database.getPictures(req.params.productId)
+    .then(pictures => {
+      res.send(pictures)
+    })
+    .catch(err => {
+      console.log('app.get- an error occurred querying the database: ', err);
+      res.send(500);
+    });
 });
 
 app.listen(port, () => {

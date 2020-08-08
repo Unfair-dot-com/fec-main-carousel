@@ -16,12 +16,21 @@ const picturesSchema = new mongoose.Schema({
 //define the model
 const Picture = mongoose.model('Picture', picturesSchema);
 
-const getRecords = (productId) => {
-  return undefined;
+//gets records by productId
+const getPictures = (productId) => {
+  return new Promise((resolve, reject) => {
+    Picture.find({"productId": productId})
+      .then(pictures => {
+        resolve(pictures);
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
 }
 
 module.exports = {
   db,
-  getRecords,
+  getPictures,
   Picture
 };
