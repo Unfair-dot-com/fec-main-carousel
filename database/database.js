@@ -20,7 +20,7 @@ const Picture = mongoose.model('Picture', picturesSchema);
 //gets records by productId
 const getPictures = (productId) => {
   return new Promise((resolve, reject) => {
-    Picture.find({"productId": productId})
+    Picture.find({"productId": productId}).sort({index: 1})
       .then(pictures => {
         resolve(pictures);
       })
