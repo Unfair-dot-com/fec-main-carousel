@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const db = require('./database.js').db;
+const Picture = require('./database.js').
 
 const baseURL = 'https://fec-hrr47.s3.us-east-2.amazonaws.com';
 
@@ -9,9 +10,6 @@ const picturesSchema = new mongoose.Schema({
   index: Number,
   fullSizeURL: String
 });
-
-//define the model
-const Picture = mongoose.model('Picture', picturesSchema);
 
 var randNumGenerator = (min, max) => {
   return Math.floor((Math.random() * max) + min);
