@@ -2,7 +2,19 @@ const mongoose = require('mongoose');
 const db = require('./database.js').db;
 const Picture = require('./database.js').Picture;
 
-const baseURL = 'https://fec-hrr47.s3.us-east-2.amazonaws.com';
+const baseURL = 'https://fec-hrr47.s3.us-east-2.amazonaws.com/';
+const folder = {
+  fullSize: 'fullSizeRandoms/',
+  thumbnail: 'thumbnailRandoms/',
+  product0Full: '',
+  product0Thumbnail: 'thumbnailProduct0/'
+};
+const fileName = {
+  fullSize: '',
+  thumbnail: 'thumbnail',
+  product0Full: 'sunMoon',
+  product0Thumbnail: 'sunMoon_thumbnail'
+}
 
 var randNumGenerator = (min, max) => {
   return Math.floor((Math.random() * max) + min);
@@ -21,7 +33,8 @@ for (var id = 1; id < 100; id++ ) {
     var picture = new Picture({
       'productId': id,
       'index': index,
-      'fullSizeURL': `${baseURL}/${paddedID}.jpg`
+      'fullSizeURL': `${baseURL}${folder.fullSize}${fileName.fullSize}${paddedID}.jpg`,
+      'thumbnailURL': `${baseURL}${folder.thumbnail}${fileName.thumbnail}${paddedID}.jpg`
     });
 
     //save to the database
@@ -40,7 +53,8 @@ for (var index = 1; index < 10; index++) {
   var picture = new Picture({
     'productId': 0,
     'index': index - 1,
-    'fullSizeURL': `${baseURL}/sunMoon${paddedID}.jpg`
+    'fullSizeURL': `${baseURL}${folder.product0Full}${fileName.product0Full}${paddedID}.jpg`,
+    'thumbnailURL': `${baseURL}${folder.product0Thumbnail}${fileName.product0Thumbnail}${paddedID}.jpg`
   });
 
   //save to the database
