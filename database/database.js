@@ -10,7 +10,8 @@ db.once('open', () => console.log('database is connected') );
 const picturesSchema = new mongoose.Schema({
   productId: Number,
   index: Number,
-  fullSizeURL: String
+  fullSizeURL: String,
+  thumbnailURL: String
 });
 
 //define the model
