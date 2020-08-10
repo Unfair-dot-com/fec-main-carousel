@@ -17,4 +17,10 @@ class App extends React.Component {
       </div>
     );
   }
+<<<<<<< HEAD:client/src/index.jsx
 }
+=======
+}
+
+ReactDOM.render(<App />, document.getElementById('main-carousel'));
+>>>>>>> changes based on PR feedback:client/index.jsx
