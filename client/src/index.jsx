@@ -13,7 +13,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        Main Carousel goes here!
+        Main Carousel coming soon!
       </div>
     );
   }

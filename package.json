@@ -10,7 +10,7 @@
   "scripts": {
     "seed": "node database/seed.js",
     "server": "nodemon ./server/server.js",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js --watch --watch-poll"
   },
   "dependencies": {
     "express": "^4.17.1",
