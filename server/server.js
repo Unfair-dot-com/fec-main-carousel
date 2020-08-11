@@ -20,7 +20,7 @@ app.get('/products/:productId', (req, res) => {
     })
     .catch((err) => {
       console.log('app.get- an error occurred querying the database: ', err);
-      res.send(500);
+      res.sendStatus(500);
     });
 });
 
