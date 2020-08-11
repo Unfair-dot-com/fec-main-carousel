@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       images: [],
-      productId: 0,
+      productId: window.location.pathname.split('/')[2],
     };
   }
 
