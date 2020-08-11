@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Image from './components/Image';
+import Carousel from './components/Carousel';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class App extends React.Component {
       images: [],
       productId: 0,
     };
-    this.carouselLoader = this.carouselLoader.bind(this);
   }
 
   componentDidMount() {
@@ -21,13 +21,6 @@ class App extends React.Component {
         });
       })
       .catch(() => console.log('error getting pictures'));
-  }
-
-  carouselLoader() {
-    if (this.state.images.length > 0) {
-      return this.state.images.map((image) => <img alt="Click Me!" id={image.index} className="thumbnail" src={image.thumbnailURL} />);
-    }
-    return <div />;
   }
 
   render() {
@@ -41,10 +34,7 @@ class App extends React.Component {
       <div>
         <Image images={this.state.images} />
         <br />
-        <div className="carousel" style={carouselStyle}>
-          {this.carouselLoader()}
-        </div>
-
+        <Carousel images={this.state.images} />
       </div>
     );
   }
