@@ -13,6 +13,7 @@
     "build": "webpack --config webpack.config.js --watch --watch-poll"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "mongoose": "^5.9.28",
     "react": "^16.13.1",
