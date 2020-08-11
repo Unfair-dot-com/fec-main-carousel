@@ -17,15 +17,26 @@ class App extends React.Component {
         this.setState({
           images: pictures.data
         });
-        console.log('pictures are here: ', pictures);
       })
       .catch(() => console.log('error getting pictures'));
   }
 
   render() {
+    // sets a default value for the url, since state data
+    // isn't available when the page first renders
+    const imageURL = this.state.images.length > 0
+      ? this.state.images[0].fullSizeURL : null;
+
+    // TODO replace this with a style sheet
+    const imgStyle = {
+      maxHeight: '500px',
+    };
+
     return (
       <div>
-        Main Carousel coming soon!
+        <div>
+          <img alt="Click to Zoom" src={imageURL} style={imgStyle} />
+        </div>
       </div>
     );
   }
