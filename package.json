@@ -1,6 +1,6 @@
 {
-  "name": "FEC",
-  "version": "1.0",
+  "name": "",
+  "version": "",
   "description": "",
   "author": "Andrew Yoder",
   "license": "",
@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.9.28"
+    "mongoose": "^5.9.28",
+    "react": "^16.13.1",
+    "react-dev": "0.0.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
