@@ -9,16 +9,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-app.get('/:productId', (req, res) => {
+app.get('/products/:productId', (req, res) => {
   database.getPictures(req.params.productId)
-    .then(pictures => {
-      res.send(pictures)
+    .then((pictures) => {
+      res.send(pictures);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log('app.get- an error occurred querying the database: ', err);
       res.send(500);
     });
