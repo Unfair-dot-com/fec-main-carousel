@@ -17,19 +17,13 @@ class App extends React.Component {
     axios.get(`/products/${this.state.productId}`)
       .then((pictures) => {
         this.setState({
-          images: pictures.data
+          images: pictures.data,
         });
       })
       .catch(() => console.log('error getting pictures'));
   }
 
   render() {
-    // TODO replace these with a style sheet
-    const carouselStyle = {
-      display: 'flex',
-      flexDirection: 'row',
-    };
-
     return (
       <div>
         <Image images={this.state.images} />

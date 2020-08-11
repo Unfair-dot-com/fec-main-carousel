@@ -11,7 +11,9 @@ class Carousel extends React.Component {
   }
 
   carouselLoader() {
+    // checks to see if images have loaded yet
     if (this.props.images.length > 0) {
+      // if so, constructs image carousel
       return this.props.images.map((image) => <img alt="Click Me!" id={image.index} className="thumbnail" src={image.thumbnailURL} />);
     }
     return <div />;
