@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/products/${this.state.productId}`)
+    axios.get(`/images/${this.state.productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,

@@ -11,9 +11,9 @@ app.use((req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static('public'));
+app.use('/products/:productid', express.static('public'));
 
-app.get('/products/:productId', (req, res) => {
+app.get('/images/:productId', (req, res) => {
   database.getPictures(req.params.productId)
     .then((pictures) => {
       res.send(pictures);
