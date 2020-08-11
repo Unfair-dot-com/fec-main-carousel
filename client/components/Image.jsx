@@ -17,12 +17,8 @@ class Image extends React.Component {
 
     // sets a default value for the url, since state data
     // isn't available when the page first renders
-    let imageURL = this.props.images !== undefined
-      ? this.props.images[0] : undefined;
-
-    if (imageURL !== undefined) {
-      imageURL = imageURL.fullSizeURL;
-    }
+    let imageURL = this.props.images.length > 0
+      ? this.props.images[0].fullSizeURL : undefined;
 
     return (
       <div className="product-image">
