@@ -1,19 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+import Image from './components/Image';
+import Carousel from './components/Carousel';
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       images: [],
-      thumbnails: [],
+      productId: 0,
     };
   }
 
-  render () {
+  componentDidMount() {
+    axios.get(`/products/${this.state.productId}`)
+      .then((pictures) => {
+        this.setState({
+          images: pictures.data,
+        });
+      })
+      .catch(() => console.log('error getting pictures'));
+  }
+
+  render() {
     return (
       <div>
-        Main Carousel coming soon!
+        <Image images={this.state.images} />
+        <br />
+        <Carousel images={this.state.images} />
       </div>
     );
   }
