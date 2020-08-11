@@ -13,6 +13,13 @@
     "build": "webpack --config webpack.config.js --watch --watch-poll",
     "test": "jest"
   },
+  "jest": {
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
@@ -25,6 +32,7 @@
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.6.0",
     "eslint-config-airbnb": "^18.2.0",
