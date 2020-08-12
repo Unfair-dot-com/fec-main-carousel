@@ -19,6 +19,7 @@ class App extends React.Component {
         this.setState({
           images: pictures.data,
         });
+        return pictures.data;
       })
       .catch(() => console.log('error getting pictures'));
   }
@@ -35,3 +36,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('main-carousel'));
+
+export default App;
