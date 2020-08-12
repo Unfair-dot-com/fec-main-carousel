@@ -13,7 +13,7 @@ describe('seed script generates correct random data', () => {
 
   beforeAll((done) => {
     // gets all products out of the database
-    Picture.find({}, (err, records) => {
+    Picture.find({ productId: 87 }, (err, records) => {
       if (err) done(err);
       allRecords = records;
       done();
@@ -22,10 +22,33 @@ describe('seed script generates correct random data', () => {
   // use the results in each of the tests
 
   test('does not assign productIds greater than 99 or less than 0', () => {
-    //iterate through all products
-    //expect productId
+    // iterates through all records
+    allRecords.forEach((record) => {
+      // checks that productId is in the acceptable range
+      expect(record.productId).toBeLessThan(100);
+      expect(record.productId).toBeGreaterThan(-1);
+    });
+  });
 
-    expect(true).toBe(true);
+  test.skip('does not assign less than 5 or more than 10 pictures to the product', () => {
+    const counts = {};
+    // iterates through all records
+    allRecords.forEach((record) => {
+      // if the productId already exists in the database
+      if (counts.hasOwnProperty(record.productId)) {
+        // increment the count by one.
+        counts[record.productId] += 1;
+      } else {
+        // else add the key to the counts object.
+        counts[record.productId] = 1;
+      }
+    });
+    // check that the counts of each number of pictures is in the acceptable range
+    Object.values(counts).forEach((value) => {
+      console.log('value: ', value);
+      expect(value).toBeLessThanOrEqual(10);
+      expect(value).toBeGreaterThanOrEqual(5);
+    });
   });
 
   // closes the database connection
@@ -33,11 +56,9 @@ describe('seed script generates correct random data', () => {
     db.close();
     done();
   });
-
 });
 
 /* Seed script generates correct random data
-  -does not assign productIds greater than 99 or less than 0
   -does not assign less than 5 pictures to the product
   -does not assign more than 10 pictures to the product
   -generates a padded random picture id that isn’t less than 1 or greater than 40

@@ -1,3 +1,4 @@
+/* eslint-disable vars-on-top */
 /* eslint-disable no-var */
 const db = require('./database.js').db;
 const Picture = require('./database.js').Picture;
@@ -16,9 +17,7 @@ const fileName = {
   product0Thumbnail: 'sunMoon_thumbnail',
 };
 
-var randNumGenerator = (min, max) => {
-  return Math.floor((Math.random() * max) + min);
-}
+var randNumGenerator = (min, max) => Math.floor((Math.random() * max) + min);
 
 // randomize pictures
 // iterate through all productIDs, 1-99
@@ -41,25 +40,25 @@ for (let id = 1; id < 100; id++) {
     // save to the database
     picture.save((err) => {
       if (err) console.log('an error occurred writing to database: ', err);
-    }),
+    });
   }
 }
 
-//import product specific pictures
-  //iterate from 1 to 9
+// import product specific pictures
+// iterate from 1 to 9
 for (var index = 1; index < 10; index++) {
-  //define the picture id
+  // define the picture id
   var paddedID = index.toString().padStart(5,0);
-  //define a new document
+  // define a new document
   var picture = new Picture({
-    'productId': 0,
-    'index': index - 1,
-    'fullSizeURL': `${baseURL}${folder.product0Full}${fileName.product0Full}${paddedID}.jpg`,
-    'thumbnailURL': `${baseURL}${folder.product0Thumbnail}${fileName.product0Thumbnail}${paddedID}.jpg`
+    productId: 0,
+    index: index - 1,
+    fullSizeURL: `${baseURL}${folder.product0Full}${fileName.product0Full}${paddedID}.jpg`,
+    thumbnailURL: `${baseURL}${folder.product0Thumbnail}${fileName.product0Thumbnail}${paddedID}.jpg`,
   });
 
-  //save to the database
+  // save to the database
   picture.save((err, picture) => {
     if (err) return console.log('an error occurred writing to database: ', err);
-  })
+  });
 }
