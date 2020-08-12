@@ -9,12 +9,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       images: [],
-      productId: 0,
+      productId: window.location.pathname.split('/')[2],
     };
   }
 
   componentDidMount() {
-    axios.get(`/products/${this.state.productId}`)
+    axios.get(`/images/${this.state.productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,
