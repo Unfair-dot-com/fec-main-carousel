@@ -3,11 +3,11 @@ const App = require('../client/index.jsx');
 
 // Could put the next four lines in a setup file?
 // https://enzymejs.github.io/enzyme/docs/installation/
-const enzyme = require('enzyme');
-const Adapter = require('enzyme-adapter-react-16');
+// const enzyme = require('enzyme');
+// const Adapter = require('enzyme-adapter-react-16');
 
-enzyme.configure({ adapter: new Adapter() });
-const wrapper = enzyme.shallow(<Foo />);
+// enzyme.configure({ adapter: new Adapter() });
+// const wrapper = enzyme.shallow(<Foo />);
 
 // TODO: update this after merging in the window.location
 const baseURL = 'http://127.0.0.1:3001/';
