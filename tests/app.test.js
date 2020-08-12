@@ -5,6 +5,7 @@
 import axios from 'axios';
 import React from 'react';
 import ReactDom from 'react-dom';
+import TestRenderer from 'react-test-renderer';
 import App from '../client/index';
 
 const baseURL = 'http://127.0.0.1:3001/products/0';
@@ -37,9 +38,3 @@ describe('Axios module', () => {
     return App.componentDidMount().then((data) => expect(data).toEqual(fakeImage));
   });
 });
-
-
-
-const randNumGenerator = (min, max) => {
-  return Math.floor((Math.random() * max) + min);
-}
