@@ -13,7 +13,7 @@ describe('seed script generates correct random data', () => {
 
   beforeAll((done) => {
     // gets all products out of the database
-    Picture.find({ productId: 87 }, (err, records) => {
+    Picture.find({ productId: 6 }, (err, records) => {
       if (err) done(err);
       allRecords = records;
       done();
@@ -51,6 +51,23 @@ describe('seed script generates correct random data', () => {
     });
   });
 
+  test('the pictureId is in the acceptable range', () => {
+    // iterates through all records
+    allRecords.forEach((record) => {
+      // isolate the last 9 digits of the fullSizeURL and change to a Number
+      let pictureId = record.fullSizeURL.slice(-9, -4);
+      pictureId = Number(pictureId);
+
+      if (pictureId > 40 || pictureId < 1) {
+        console.log(`ProductId ${record.productId} has an incorrectly assigned image at index ${record.index}`);
+      }
+
+      // checks that productId is in the acceptable range
+      expect(pictureId).toBeLessThanOrEqual(40);
+      expect(pictureId).toBeGreaterThanOrEqual(1);
+    });
+  });
+
   // closes the database connection
   afterAll((done) => {
     db.close();
@@ -59,8 +76,6 @@ describe('seed script generates correct random data', () => {
 });
 
 /* Seed script generates correct random data
-  -does not assign less than 5 pictures to the product
-  -does not assign more than 10 pictures to the product
   -generates a padded random picture id that isn’t less than 1 or greater than 40
   -fullsize urls follow the correct url scheme
   -thumbnail urls follow the correct url scheme
