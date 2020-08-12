@@ -1,7 +1,7 @@
 // TODO: update this after merging in the window.location
-const baseURL = 'http://127.0.0.1:3001/';
+const baseURL = 'http://127.0.0.1:3001/products/0';
 
-describe('Main Carousel', () => {
+describe('App', () => {
   beforeAll(async () => {
     await page.goto(`${baseURL}`);
   });
