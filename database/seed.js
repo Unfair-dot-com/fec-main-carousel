@@ -28,7 +28,7 @@ for (let id = 1; id < 100; id++) {
   // then iterate through all indicies
   for (var index = 0; index < maxIndex; index++) {
     // generate a padded, random picture id between 1 and 40 inclusive
-    const paddedID = randNumGenerator(1, 41).toString().padStart(5,0);
+    const paddedID = randNumGenerator(1, 41).toString().padStart(5, 0);
     // define a new document
     const picture = new Picture({
       productId: id,

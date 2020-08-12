@@ -1,5 +1,8 @@
 /* eslint-disable no-undef */
-import { db, Picture } from '../database/database';
+const { db } = require('../database/database');
+const { Picture } = require('../database/database');
+
+const baseURL = 'https://fec-hrr47.s3.us-east-2.amazonaws.com/';
 
 describe('learning mocks', () => {
   test('this should always pass', () => {
@@ -13,7 +16,7 @@ describe('seed script generates correct random data', () => {
 
   beforeAll((done) => {
     // gets all products out of the database
-    Picture.find({ productId: 6 }, (err, records) => {
+    Picture.find({ }, (err, records) => {
       if (err) done(err);
       allRecords = records;
       done();
@@ -45,13 +48,12 @@ describe('seed script generates correct random data', () => {
     });
     // check that the counts of each number of pictures is in the acceptable range
     Object.values(counts).forEach((value) => {
-      console.log('value: ', value);
       expect(value).toBeLessThanOrEqual(10);
       expect(value).toBeGreaterThanOrEqual(5);
     });
   });
 
-  test('the pictureId is in the acceptable range', () => {
+  test.skip('the pictureId is in the acceptable range', () => {
     // iterates through all records
     allRecords.forEach((record) => {
       // isolate the last 9 digits of the fullSizeURL and change to a Number
@@ -68,6 +70,25 @@ describe('seed script generates correct random data', () => {
     });
   });
 
+  test('the fullSizeURLs follow the correct scheme', () => {
+    // iterates through all records
+    allRecords.forEach((record) => {
+      // isolate the base url in the fullSizeURL
+      let comIndex = record.fullSizeURL.indexOf('.com/');
+      const fullBase = record.fullSizeURL.slice(0, comIndex + 5);
+      expect(fullBase).toBe(baseURL);
+
+      // isolate the base url in the thumbnail
+      comIndex = record.thumbnailURL.indexOf('.com/');
+      const thumbnailBase = record.thumbnailURL.slice(0, comIndex + 5);
+      expect(thumbnailBase).toBe(baseURL);
+
+      // TODO: add some more granularity
+    });
+  });
+
+  // https://fec-hrr47.s3.us-east-2.amazonaws.com/thumbnailRandoms/thumbnail00041.jpg
+
   // closes the database connection
   afterAll((done) => {
     db.close();
@@ -76,7 +97,6 @@ describe('seed script generates correct random data', () => {
 });
 
 /* Seed script generates correct random data
-  -generates a padded random picture id that isn’t less than 1 or greater than 40
   -fullsize urls follow the correct url scheme
   -thumbnail urls follow the correct url scheme
   */
