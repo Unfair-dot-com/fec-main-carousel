@@ -27,7 +27,9 @@
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
+    "jest-puppeteer": "^4.4.0",
     "mongoose": "^5.9.28",
+    "puppeteer": "^5.2.1",
     "react": "^16.13.1",
     "react-dev": "0.0.1",
     "react-dom": "^16.13.1"
@@ -39,7 +41,6 @@
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^7.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
@@ -47,9 +48,7 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.3.0",
-    "jest-puppeteer": "^4.4.0",
     "nodemon": "^2.0.4",
-    "puppeteer": "^5.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
