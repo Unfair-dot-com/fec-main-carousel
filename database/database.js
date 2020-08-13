@@ -5,7 +5,6 @@ mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'database connection error:'));
-db.once('open', () => console.log('database is connected'));
 
 // open a connection to the database
 const picturesSchema = new mongoose.Schema({

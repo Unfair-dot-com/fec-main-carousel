@@ -33,7 +33,7 @@ describe('seed script generates correct random data', () => {
     });
   });
 
-  test.skip('does not assign less than 5 or more than 10 pictures to the product', () => {
+  test('does not assign less than 5 or more than 10 pictures to the product', () => {
     const counts = {};
     // iterates through all records
     allRecords.forEach((record) => {
@@ -53,7 +53,7 @@ describe('seed script generates correct random data', () => {
     });
   });
 
-  test.skip('the pictureId is in the acceptable range', () => {
+  test('the pictureId is in the acceptable range', () => {
     // iterates through all records
     allRecords.forEach((record) => {
       // isolate the last 9 digits of the fullSizeURL and change to a Number
@@ -84,10 +84,9 @@ describe('seed script generates correct random data', () => {
       expect(thumbnailBase).toBe(baseURL);
 
       // TODO: add some more granularity
+      // https://fec-hrr47.s3.us-east-2.amazonaws.com/thumbnailRandoms/thumbnail00041.jpg
     });
   });
-
-  // https://fec-hrr47.s3.us-east-2.amazonaws.com/thumbnailRandoms/thumbnail00041.jpg
 
   // closes the database connection
   afterAll((done) => {
@@ -95,8 +94,3 @@ describe('seed script generates correct random data', () => {
     done();
   });
 });
-
-/* Seed script generates correct random data
-  -fullsize urls follow the correct url scheme
-  -thumbnail urls follow the correct url scheme
-  */
