@@ -2,18 +2,33 @@ import axios from 'axios';
 import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
-import App from '../client/components/App';
 import { shallow, mount, render } from 'enzyme';
-
-const baseURL = 'http://127.0.0.1:3001/products/0';
+import App from '../client/components/App';
+import Image from '../client/components/Image';
+import Carousel from '../client/components/Carousel';
 
 describe('App with Enzyme', () => {
   it('renders without crashing', () => {
     shallow(<App />);
   });
+
+  it('renders an Image, a Carousel and four arrows', () => {
+    const wrapper = shallow(<App />, { disableLifecycleMethods: true });
+    expect(wrapper.find(Image).length).toBe(1);
+    expect(wrapper.find(Carousel).length).toBe(1);
+    // expect(wrapper.find(Arrow).length).toBe(4);
+  });
 });
 
+/*  More tests: -should make a get request to the correct api upon loading
+      - likely need to mock the window.location.pathname
+      - and likely need to mock the server
+  -should load the result of the api call into state
+  */
+
 /*
+const baseURL = 'http://127.0.0.1:3001/products/0';
+
 describe('Axios module', () => {
   jest.mock('axios');
   axios.get = jest.fn();
