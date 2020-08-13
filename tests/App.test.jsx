@@ -7,6 +7,13 @@ import { shallow, mount, render } from 'enzyme';
 
 const baseURL = 'http://127.0.0.1:3001/products/0';
 
+describe('App with Enzyme', () => {
+  it('renders without crashing', () => {
+    shallow(<App />);
+  });
+});
+
+/*
 describe('Axios module', () => {
   jest.mock('axios');
   axios.get = jest.fn();
@@ -26,9 +33,9 @@ describe('Axios module', () => {
     return App.componentDidMount().then((data) => expect(data).toEqual(fakeImage));
   });
 });
-
+*/
 /*
-describe('App', () => {
+describe('App with Puppeteer', () => {
   beforeAll(async () => {
     await page.goto(`${baseURL}`);
   });
