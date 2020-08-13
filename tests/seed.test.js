@@ -28,8 +28,8 @@ describe('seed script generates correct random data', () => {
     // iterates through all records
     allRecords.forEach((record) => {
       // checks that productId is in the acceptable range
-      expect(record.productId).toBeLessThan(100);
-      expect(record.productId).toBeGreaterThan(-1);
+      expect(record.productId).toBeLessThanOrEqual(99);
+      expect(record.productId).toBeGreaterThanOrEqual(0);
     });
   });
 
