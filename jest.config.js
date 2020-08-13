@@ -8,6 +8,7 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
   },
   preset: 'jest-puppeteer',
+  setupFilesAfterEnv: ['<rootDir>tests/config/test-setup.js'],
   testEnvironment: 'jsdom',
   transform: { '^.+\\.jsx?$': 'babel-jest' },
   verbose: true,
