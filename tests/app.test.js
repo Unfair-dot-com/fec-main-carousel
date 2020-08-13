@@ -10,16 +10,6 @@ import App from '../client/components/App';
 
 const baseURL = 'http://127.0.0.1:3001/products/0';
 
-describe('App', () => {
-  beforeAll(async () => {
-    await page.goto(`${baseURL}`);
-  });
-
-  it('should be titled "Main Carousel"', async () => {
-    await expect(page.title()).resolves.toMatch('Main Carousel');
-  });
-});
-
 describe('Axios module', () => {
   jest.mock('axios');
 
@@ -38,3 +28,15 @@ describe('Axios module', () => {
     return App.componentDidMount().then((data) => expect(data).toEqual(fakeImage));
   });
 });
+
+/*
+describe('App', () => {
+  beforeAll(async () => {
+    await page.goto(`${baseURL}`);
+  });
+
+  it('should be titled "Main Carousel"', async () => {
+    await expect(page.title()).resolves.toMatch('Main Carousel');
+  });
+});
+*/
