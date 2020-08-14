@@ -1,14 +1,13 @@
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-const db = require('./database.js').db;
-const Picture = require('./database.js').Picture;
+const { Picture } = require('./database.js');
 
 const baseURL = 'https://fec-hrr47.s3.us-east-2.amazonaws.com/';
 const folder = {
   fullSize: 'fullSizeRandoms/',
   thumbnail: 'thumbnailRandoms/',
   product0Full: '',
-  product0Thumbnail: 'thumbnailProduct0/'
+  product0Thumbnail: 'thumbnailProduct0/',
 };
 const fileName = {
   fullSize: '',
@@ -26,7 +25,7 @@ for (let id = 1; id < 100; id++) {
   // choose a random number of pictures for the product, min 5, max 10 inclusive
   const maxIndex = randNumGenerator(5, 11);
   // then iterate through all indicies
-  for (var index = 0; index < maxIndex; index++) {
+  for (let index = 0; index < maxIndex; index += 1) {
     // generate a padded, random picture id between 1 and 40 inclusive
     const paddedID = randNumGenerator(1, 41).toString().padStart(5, 0);
     // define a new document
@@ -46,9 +45,9 @@ for (let id = 1; id < 100; id++) {
 
 // import product specific pictures
 // iterate from 1 to 9
-for (var index = 1; index < 10; index++) {
+for (var index = 1; index < 10; index += 1) {
   // define the picture id
-  var paddedID = index.toString().padStart(5,0);
+  var paddedID = index.toString().padStart(5, 0);
   // define a new document
   var picture = new Picture({
     productId: 0,
@@ -60,5 +59,6 @@ for (var index = 1; index < 10; index++) {
   // save to the database
   picture.save((err, picture) => {
     if (err) return console.log('an error occurred writing to database: ', err);
+    return undefined;
   });
 }

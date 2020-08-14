@@ -14,7 +14,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/images/${this.state.productId}`)
+    const { productId } = this.state;
+    axios.get(`/images/${productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,
@@ -29,11 +30,12 @@ class App extends React.Component {
   }
 
   render() {
+    const { images } = this.state;
     return (
       <div>
-        <Image images={this.state.images} />
+        <Image images={images} />
         <br />
-        <Carousel images={this.state.images} />
+        <Carousel images={images} />
         <br />
         <Button onClick={this.handleClick}>&lt;</Button>
         <Button onClick={this.handleClick}>&gt;</Button>
