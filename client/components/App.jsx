@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Image from './Image';
 import Carousel from './Carousel';
@@ -14,7 +13,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/images/${this.state.productId}`)
+    const { productId } = this.state;
+    axios.get(`/images/${productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,
@@ -25,11 +25,12 @@ class App extends React.Component {
   }
 
   render() {
+    const { images } = this.state;
     return (
       <div>
-        <Image images={this.state.images} />
+        <Image images={images} />
         <br />
-        <Carousel images={this.state.images} />
+        <Carousel images={images} />
       </div>
     );
   }
