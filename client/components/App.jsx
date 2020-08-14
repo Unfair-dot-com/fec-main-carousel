@@ -24,6 +24,10 @@ class App extends React.Component {
       .catch(() => console.log('error getting pictures'));
   }
 
+  handleClick() {
+    console.log('button was clicked!');
+  }
+
   render() {
     return (
       <div>
@@ -31,8 +35,8 @@ class App extends React.Component {
         <br />
         <Carousel images={this.state.images} />
         <br />
-        <Button>&lt;</Button>
-        <Button>&gt;</Button>
+        <Button onClick={this.handleClick}>&lt;</Button>
+        <Button onClick={this.handleClick}>&gt;</Button>
       </div>
     );
   }
