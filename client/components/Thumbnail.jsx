@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-// border prop compares activeIndex & id to see
+// border compares activeIndex & id to see
 // whether it should have a purple border
 const Thumbnail = styled.img`
   border: ${props => (props.activeIndex === props.id
