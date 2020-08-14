@@ -18,7 +18,7 @@ class Carousel extends React.Component {
     // checks to see if images have loaded yet
     if (this.props.images.length > 0) {
       const { activeThumbnail } = this.state;
-      // if so, constructs image carousel
+      // if so, constructs images in the carousel
       return this.props.images.map((image) => (
         <Thumbnail
           id={image.index}
@@ -39,7 +39,25 @@ class Carousel extends React.Component {
   }
 
   handleButtonClick(e) {
-    console.log('button clicked!');
+    const { activeThumbnail } = this.state;
+    const { className } = e.target;
+    const { images } = this.props;
+
+    // if right button is clicked, increment activeThumbnail
+    if (className.indexOf('right') !== -1) {
+      console.log('right button clicked!');
+      this.setState((state) => {
+        state.activeThumbnail += 1;
+        return { activeThumbnail: state.activeThumbnail };
+      });
+    // if left button is clicked, decrement activeThumbnail
+    } else if (className.indexOf('left') !== -1) {
+      console.log('left button clicked!');
+      this.setState((state) => {
+        state.activeThumbnail -= 1;
+        return { activeThumbnail: state.activeThumbnail };
+      });
+    }
   }
 
   render() {
