@@ -70,8 +70,9 @@ class App extends React.Component {
         <br />
         <Carousel
           images={images}
-          handleButtonClick={this.handleButtonClick}
           activeThumbnail={activeThumbnail}
+          handleButtonClick={this.handleButtonClick}
+          handleThumbnailClick={this.handleThumbnailClick}
         />
         <br />
         <Button onClick={this.handleButtonClick}>&lt;</Button>

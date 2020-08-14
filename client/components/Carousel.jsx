@@ -10,11 +10,11 @@ class Carousel extends React.Component {
   }
 
   carouselLoader() {
+    const { images , activeThumbnail, handleThumbnailClick } = this.props;
     // checks to see if images have loaded yet
-    if (this.props.images.length > 0) {
-      const { activeThumbnail, handleThumbnailClick } = this.props;
+    if (images.length > 0) {
       // if so, constructs thumbnails in the carousel
-      return this.props.images.map((image) => (
+      return images.map((image) => (
         <Thumbnail
           id={image.index}
           activeIndex={activeThumbnail}
