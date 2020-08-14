@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Image from './Image';
 import Carousel from './Carousel';
+import Button from './Button';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +25,10 @@ class App extends React.Component {
       .catch(() => console.log('error getting pictures'));
   }
 
+  handleClick() {
+    console.log('button was clicked!');
+  }
+
   render() {
     const { images } = this.state;
     return (
@@ -31,6 +36,9 @@ class App extends React.Component {
         <Image images={images} />
         <br />
         <Carousel images={images} />
+        <br />
+        <Button onClick={this.handleClick}>&lt;</Button>
+        <Button onClick={this.handleClick}>&gt;</Button>
       </div>
     );
   }
