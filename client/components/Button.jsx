@@ -1,17 +1,19 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  background: transparent;
+  background: white;
+  font-family: 'Poppins', arial, sans-serif;
+  font-size: 125%;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  margin: 0 lem;
-  padding: 0.25em 1em;
-  ${props => props.primary
-    && css`
-    background: palevioletred;
-    color: white;
-  `};
+  box-shadow: 0 5px 10px rgba(34,25,36,.2);
+  border: 2px solid white;
+  text-align: center;
+  &:hover {
+    border: 2px solid #7f187f;
+    color: #7f187f;
+  }
 `;
 
 export default Button;

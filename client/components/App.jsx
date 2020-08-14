@@ -31,7 +31,8 @@ class App extends React.Component {
         <br />
         <Carousel images={this.state.images} />
         <br />
-        <Button primary>></Button>
+        <Button>&lt;</Button>
+        <Button>&gt;</Button>
       </div>
     );
   }
