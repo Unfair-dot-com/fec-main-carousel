@@ -4,7 +4,6 @@ import React from 'react';
 import axios from 'axios';
 import Image from './Image';
 import Carousel from './Carousel';
-import Button from './Button';
 
 class App extends React.Component {
   constructor(props) {
@@ -74,9 +73,6 @@ class App extends React.Component {
           handleButtonClick={this.handleButtonClick}
           handleThumbnailClick={this.handleThumbnailClick}
         />
-        <br />
-        <Button onClick={this.handleButtonClick}>&lt;</Button>
-        <Button onClick={this.handleButtonClick}>&gt;</Button>
       </div>
     );
   }
