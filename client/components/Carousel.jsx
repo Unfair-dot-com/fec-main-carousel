@@ -1,4 +1,5 @@
 import React from 'react';
+import Thumbnail from './Thumbnail';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Carousel extends React.Component {
     // checks to see if images have loaded yet
     if (this.props.images.length > 0) {
       // if so, constructs image carousel
-      return this.props.images.map((image) => <img alt="Click Me!" id={image.index} className="thumbnail" src={image.thumbnailURL} />);
+      return this.props.images.map((image) => <Thumbnail alt="Click Me!" id={image.index} className="thumbnail" src={image.thumbnailURL} />);
     }
     return <div />;
   }
