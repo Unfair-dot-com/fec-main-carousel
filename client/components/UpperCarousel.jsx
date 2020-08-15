@@ -4,7 +4,11 @@ import styled from 'styled-components';
 import Button from './Button';
 
 const StyledUpperCarousel = styled.div`
-  background-color: purple
+  background-color: white
+`;
+
+const StyledImage = styled.img`
+  max-height: 500px
 `;
 
 class UpperCarousel extends React.Component {
@@ -16,11 +20,6 @@ class UpperCarousel extends React.Component {
   }
 
   render() {
-    // TODO replace this with a styled component
-    const imgStyle = {
-      maxHeight: '500px',
-    };
-
     // sets a default value for the url, since state data
     // isn't available when the page first renders
     const { handleButtonClick, images, numberOfImages, activeThumbnail, className } = this.props;
@@ -33,7 +32,7 @@ class UpperCarousel extends React.Component {
           &lt;
         </Button>
 
-        <img alt="Click to Zoom" src={imageURL} style={imgStyle} />
+        <StyledImage alt="Click to Zoom" src={imageURL} />
 
         <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &gt;
