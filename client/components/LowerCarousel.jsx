@@ -1,8 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React from 'react';
+import styled from 'styled-components';
 import Thumbnail from './Thumbnail';
 import Button from './Button';
+
+const StyledLowerCarousel = styled.div`
+  color: purple
+`;
+//  max-width: 200px,
+//   display: flex,
+//  flexDirection: row,
+//  alignItems: center,
+//  overflow: hidden,
 
 class LowerCarousel extends React.Component {
   constructor(props) {
@@ -28,25 +38,21 @@ class LowerCarousel extends React.Component {
   }
 
   render() {
-    // TODO replace these with a styled components
-    const carouselStyle = {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-    };
-
-    const { handleButtonClick, numberOfImages, activeThumbnail } = this.props;
+    const { handleButtonClick, numberOfImages, activeThumbnail, className } = this.props;
 
     return (
-      <div className="carousel" style={carouselStyle}>
+      <StyledLowerCarousel className={`lower-carousel-wrapper ${className}`}>
+        Hello!
         <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &lt;
         </Button>
-        {this.carouselLoader()}
+        <div className="lower-carousel">
+          {this.carouselLoader()}
+        </div>
         <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &gt;
         </Button>
-      </div>
+      </StyledLowerCarousel>
     );
   }
 }

@@ -1,6 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import styled from 'styled-components';
 import Button from './Button';
+
+const StyledUpperCarousel = styled.div`
+  background-color: purple
+`;
 
 class UpperCarousel extends React.Component {
   constructor(props) {
@@ -18,12 +23,12 @@ class UpperCarousel extends React.Component {
 
     // sets a default value for the url, since state data
     // isn't available when the page first renders
-    const { handleButtonClick, images, numberOfImages, activeThumbnail } = this.props;
+    const { handleButtonClick, images, numberOfImages, activeThumbnail, className } = this.props;
     const imageURL = images.length > 0
       ? images[0].fullSizeURL : undefined;
 
     return (
-      <div className="product-image">
+      <StyledUpperCarousel className={`product-image ${className}`}>
         <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &lt;
         </Button>
@@ -33,7 +38,7 @@ class UpperCarousel extends React.Component {
         <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &gt;
         </Button>
-      </div>
+      </StyledUpperCarousel>
     );
   }
 }
