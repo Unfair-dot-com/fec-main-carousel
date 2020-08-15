@@ -24,7 +24,7 @@ class UpperCarousel extends React.Component {
     // isn't available when the page first renders
     const { handleButtonClick, images, numberOfImages, activeThumbnail, className } = this.props;
     const imageURL = images.length > 0
-      ? images[0].fullSizeURL : undefined;
+      ? images[2].fullSizeURL : undefined;
 
     return (
       <StyledUpperCarousel className={`product-image ${className}`}>

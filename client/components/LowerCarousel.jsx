@@ -5,14 +5,22 @@ import styled from 'styled-components';
 import Thumbnail from './Thumbnail';
 import Button from './Button';
 
-const StyledLowerCarousel = styled.div`
-  color: purple
+const StyledGridContainer = styled.div`
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  grid-template-rows: 70px;
 `;
-//  max-width: 200px,
 //   display: flex,
 //  flexDirection: row,
 //  alignItems: center,
-//  overflow: hidden,
+
+const StyledCarousel = styled.div`
+  overflow: hidden;
+  display: flex;
+  flexDirection: row;
+  alignItems: center;
+`;
 
 class LowerCarousel extends React.Component {
   constructor(props) {
@@ -41,18 +49,17 @@ class LowerCarousel extends React.Component {
     const { handleButtonClick, numberOfImages, activeThumbnail, className } = this.props;
 
     return (
-      <StyledLowerCarousel className={`lower-carousel-wrapper ${className}`}>
-        Hello!
+      <StyledGridContainer className={`lower-carousel-wrapper ${className}`}>
         <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &lt;
         </Button>
-        <div className="lower-carousel">
+        <StyledCarousel className="lower-carousel">
           {this.carouselLoader()}
-        </div>
+        </StyledCarousel>
         <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &gt;
         </Button>
-      </StyledLowerCarousel>
+      </StyledGridContainer>
     );
   }
 }

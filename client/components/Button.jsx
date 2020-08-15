@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// calculates whether to
+// calculates whether or not to show the button
 const isDisplayed = (props) => {
   const isLeftButton = props.className.indexOf('left') !== -1;
   const isRightButton = props.className.indexOf('right') !== -1;
@@ -21,8 +21,8 @@ const Button = styled.button`
   font-family: 'Poppins', arial, sans-serif;
   font-size: 125%;
   text-align: center;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   box-shadow: 0 5px 10px rgba(34,25,36,.2);
   border: 2px solid white;
