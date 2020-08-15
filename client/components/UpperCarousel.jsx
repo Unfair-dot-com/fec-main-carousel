@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Button from './Button';
 
@@ -10,7 +11,7 @@ class UpperCarousel extends React.Component {
   }
 
   render() {
-    // TODO replace this with a style sheet
+    // TODO replace this with a styled component
     const imgStyle = {
       maxHeight: '500px',
     };
