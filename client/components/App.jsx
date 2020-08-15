@@ -10,6 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       images: [],
+      numberOfImages: 0,
       productId: window.location.pathname.split('/')[2],
       activeThumbnail: 0,
     };
@@ -24,6 +25,7 @@ class App extends React.Component {
       .then((pictures) => {
         this.setState({
           images: pictures.data,
+          numberOfImages: pictures.data.length,
         });
         return pictures.data;
       })
@@ -58,17 +60,19 @@ class App extends React.Component {
   }
 
   render() {
-    const { images, activeThumbnail } = this.state;
+    const { images, numberOfImages, activeThumbnail } = this.state;
     return (
       <div>
         <Image
           images={images}
+          numberOfImages={numberOfImages}
           handleButtonClick={this.handleButtonClick}
-          activeImage={activeThumbnail}
+          activeThumbnail={activeThumbnail}
         />
         <br />
         <Carousel
           images={images}
+          numberOfImages={numberOfImages}
           activeThumbnail={activeThumbnail}
           handleButtonClick={this.handleButtonClick}
           handleThumbnailClick={this.handleThumbnailClick}

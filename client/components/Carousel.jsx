@@ -10,7 +10,7 @@ class Carousel extends React.Component {
   }
 
   carouselLoader() {
-    const { images , activeThumbnail, handleThumbnailClick } = this.props;
+    const { images, activeThumbnail, handleThumbnailClick } = this.props;
     // checks to see if images have loaded yet
     if (images.length > 0) {
       // if so, constructs thumbnails in the carousel
@@ -34,15 +34,15 @@ class Carousel extends React.Component {
       alignItems: 'center',
     };
 
-    const { handleButtonClick } = this.props;
+    const { handleButtonClick, numberOfImages, activeThumbnail } = this.props;
 
     return (
       <div className="carousel" style={carouselStyle}>
-        <Button className="left-button" onClick={handleButtonClick}>
+        <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &lt;
         </Button>
         {this.carouselLoader()}
-        <Button className="right-button" onClick={handleButtonClick}>
+        <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &gt;
         </Button>
       </div>
