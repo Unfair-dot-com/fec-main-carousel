@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-class Image extends React.Component {
+class UpperCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,4 +37,4 @@ class Image extends React.Component {
   }
 }
 
-export default Image;
+export default UpperCarousel;

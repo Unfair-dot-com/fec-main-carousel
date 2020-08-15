@@ -3,7 +3,7 @@ import React from 'react';
 import Thumbnail from './Thumbnail';
 import Button from './Button';
 
-class Carousel extends React.Component {
+class LowerCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.carouselLoader = this.carouselLoader.bind(this);
@@ -50,4 +50,4 @@ class Carousel extends React.Component {
   }
 }
 
-export default Carousel;
+export default LowerCarousel;

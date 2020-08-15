@@ -2,8 +2,8 @@
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
-import Image from './Image';
-import Carousel from './Carousel';
+import UpperCarousel from './UpperCarousel';
+import LowerCarousel from './LowerCarousel';
 
 class App extends React.Component {
   constructor(props) {
@@ -63,14 +63,14 @@ class App extends React.Component {
     const { images, numberOfImages, activeThumbnail } = this.state;
     return (
       <div>
-        <Image
+        <UpperCarousel
           images={images}
           numberOfImages={numberOfImages}
           handleButtonClick={this.handleButtonClick}
           activeThumbnail={activeThumbnail}
         />
         <br />
-        <Carousel
+        <LowerCarousel
           images={images}
           numberOfImages={numberOfImages}
           activeThumbnail={activeThumbnail}
