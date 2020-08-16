@@ -7,7 +7,7 @@ const Thumbnail = styled.img`
     ? '2px solid #7f187f'
     : '2px solid white')};
   border-radius:10px;
-  margin: 5px;
+  margin: auto;
 `;
 
 export default Thumbnail;

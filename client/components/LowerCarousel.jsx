@@ -6,20 +6,18 @@ import Thumbnail from './Thumbnail';
 import Button from './Button';
 
 const StyledGridContainer = styled.div`
-  max-width: 500px;
+  width: 500px;
   display: grid;
-  grid-template-columns: 40px 1fr 40px;
-  grid-template-rows: 70px;
+  grid-template-columns: 48px auto 48px;
+  grid-template-rows: 100%;
 `;
-//   display: flex,
-//  flexDirection: row,
-//  alignItems: center,
 
 const StyledCarousel = styled.div`
   overflow: hidden;
   display: flex;
   flexDirection: row;
   alignItems: center;
+  padding: 12px 4px;
 `;
 
 class LowerCarousel extends React.Component {
