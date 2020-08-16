@@ -23,7 +23,7 @@ const Button = styled.button`
   text-align: center;
   width: 48px;
   height: 48px;
-  margin: auto;
+  margin: auto 0;
   border-radius: 50%;
   box-shadow: 0 5px 10px rgba(34,25,36,.2);
   border: 2px solid white;
@@ -31,7 +31,7 @@ const Button = styled.button`
     border: 2px solid #7f187f;
     color: #7f187f;
   }
-  visibility: ${(props) => isDisplayed(props)}
+  visibility: ${(props) => isDisplayed(props)};
 `;
 
 export default Button;

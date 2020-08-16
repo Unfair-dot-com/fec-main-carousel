@@ -5,11 +5,14 @@ import styled from 'styled-components';
 import Thumbnail from './Thumbnail';
 import Button from './Button';
 
-const StyledGridContainer = styled.div`
+const GridWrapper = styled.div`
   width: 500px;
+`;
+const StyledGridContainer = styled.div`
   display: grid;
   grid-template-columns: 48px auto 48px;
   grid-template-rows: 100%;
+  margin: 0 auto;
 `;
 
 const StyledCarousel = styled.div`
@@ -23,10 +26,10 @@ const StyledCarousel = styled.div`
 class LowerCarousel extends React.Component {
   constructor(props) {
     super(props);
-    this.carouselLoader = this.carouselLoader.bind(this);
+    this.thumbnailLoader = this.thumbnailLoader.bind(this);
   }
 
-  carouselLoader() {
+  thumbnailLoader() {
     const { images, activeThumbnail, handleThumbnailClick } = this.props;
     // checks to see if images have loaded yet
     if (images.length > 0) {
@@ -47,17 +50,19 @@ class LowerCarousel extends React.Component {
     const { handleButtonClick, numberOfImages, activeThumbnail, className } = this.props;
 
     return (
-      <StyledGridContainer className={`lower-carousel-wrapper ${className}`}>
-        <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
-          &lt;
-        </Button>
-        <StyledCarousel className="lower-carousel">
-          {this.carouselLoader()}
-        </StyledCarousel>
-        <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
-          &gt;
-        </Button>
-      </StyledGridContainer>
+      <GridWrapper>
+        <StyledGridContainer className="lower-carousel-wrapper">
+          <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+            &lt;
+          </Button>
+          <StyledCarousel className="lower-carousel">
+            {this.thumbnailLoader()}
+          </StyledCarousel>
+          <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+            &gt;
+          </Button>
+        </StyledGridContainer>
+      </GridWrapper>
     );
   }
 }

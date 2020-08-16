@@ -4,11 +4,27 @@ import styled from 'styled-components';
 import Button from './Button';
 
 const StyledUpperCarousel = styled.div`
-  background-color: white
+  display: grid;
+  grid-template-columns: 48px 404px 48px;
+  grid-template-rows: 100%;
+  max-height: 500px;
+  max-width: 500px;
 `;
 
 const StyledImage = styled.img`
-  max-height: 500px
+  max-height: 500px;
+  grid-area: 1 / 1 / 2 / 4;
+  z-index: 0;
+`;
+
+const LeftStyledButton = styled(Button)`
+  grid-area: 1 / 1 / 2 / 2;
+  z-index: 1;
+`;
+
+const RightStyledButton = styled(Button)`
+  grid-area: 1 / 3 / 2 / 4;
+  z-index: 2;
 `;
 
 class UpperCarousel extends React.Component {
@@ -27,16 +43,16 @@ class UpperCarousel extends React.Component {
       ? images[2].fullSizeURL : undefined;
 
     return (
-      <StyledUpperCarousel className={`product-image ${className}`}>
-        <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+      <StyledUpperCarousel className="product-image">
+        <LeftStyledButton className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &lt;
-        </Button>
+        </LeftStyledButton>
 
         <StyledImage alt="Click to Zoom" src={imageURL} />
 
-        <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+        <RightStyledButton className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &gt;
-        </Button>
+        </RightStyledButton>
       </StyledUpperCarousel>
     );
   }
