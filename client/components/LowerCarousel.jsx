@@ -19,13 +19,20 @@ const GridContainer = styled.div`
 // Calculates number of thumbnails that will fit evenly into the carousel width
 // TODO: make this generate dynamically based on width of parent div
 const numOfThumbnails = Math.floor((500 - 48 * 2 - 8) / 70);
-const StyledCarousel = styled.div`
+const CarouselWrapper = styled.div`
+  padding: 12px 4px;
+  width: ${numOfThumbnails * 70}px;
   overflow: hidden;
+`;
+
+const InnerCarousel = styled.div`
+  list-style-type: none;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 12px 4px;
-  width: ${numOfThumbnails * 70}px;
+  position: relative;
+  left: 0px;
+  width: 100%;
 `;
 
 class LowerCarousel extends React.Component {
@@ -60,9 +67,11 @@ class LowerCarousel extends React.Component {
           <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
             &lt;
           </Button>
-          <StyledCarousel className="lower-carousel">
-            {this.thumbnailLoader()}
-          </StyledCarousel>
+          <CarouselWrapper className="lower-carousel">
+            <InnerCarousel>
+              {this.thumbnailLoader()}
+            </InnerCarousel>
+          </CarouselWrapper>
           <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
             &gt;
           </Button>
