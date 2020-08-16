@@ -28,7 +28,7 @@ const InnerCarousel = styled.div`
   flex-direction: row;
   align-items: center;
   position: relative;
-  left: 0px;
+  left: ${(props) => props.position}px;
   width: 100%;
 `;
 
@@ -69,8 +69,6 @@ class LowerCarousel extends React.Component {
     // checks if new selected Thumbnail is currently hidden to the left
     isHidden = activeThumbnail < firstVisibleThumbnail && activeThumbnail >= 0;
 
-    console.log('isHidden left: ', isHidden);
-
     if (isHidden) {
       // if so, move the carousel to the right
       this.setState((state) => {
@@ -103,7 +101,7 @@ class LowerCarousel extends React.Component {
 
   render() {
     const { handleButtonClick, numberOfImages, activeThumbnail } = this.props;
-    const { numOfThumbnails } = this.state;
+    const { numOfThumbnails, carouselPosition } = this.state;
 
     return (
       <GridWrapper>
@@ -112,7 +110,7 @@ class LowerCarousel extends React.Component {
             &lt;
           </Button>
           <CarouselWrapper className="lower-carousel" numOfThumbnails={numOfThumbnails}>
-            <InnerCarousel>
+            <InnerCarousel position={carouselPosition}>
               {this.thumbnailLoader()}
             </InnerCarousel>
           </CarouselWrapper>
