@@ -5,7 +5,7 @@ import Button from './Button';
 
 const StyledUpperCarousel = styled.div`
   display: grid;
-  grid-template-columns: 48px 404px 48px;
+  grid-template-columns: 48px auto 48px;
   grid-template-rows: 100%;
   max-height: 500px;
   max-width: 500px;
@@ -38,7 +38,7 @@ class UpperCarousel extends React.Component {
   render() {
     // sets a default value for the url, since state data
     // isn't available when the page first renders
-    const { handleButtonClick, images, numberOfImages, activeThumbnail, className } = this.props;
+    const { handleButtonClick, images, numberOfImages, activeThumbnail } = this.props;
     const imageURL = images.length > 0
       ? images[2].fullSizeURL : undefined;
 
