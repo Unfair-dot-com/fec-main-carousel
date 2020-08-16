@@ -7,13 +7,13 @@ const isDisplayed = (props) => {
   // hides the button when the first thumbnail is active
   if (props.activeThumbnail === 0 && isLeftButton) {
     // dont display the button
-    return 'none';
+    return 'hidden';
   }
   // hides the button when the last thumbnail is active
   if (props.activeThumbnail === props.number - 1 && isRightButton) {
-    return 'none';
+    return 'hidden';
   }
-  return 'inline';
+  return 'visible';
 };
 
 const Button = styled.button`
@@ -23,6 +23,7 @@ const Button = styled.button`
   text-align: center;
   width: 40px;
   height: 40px;
+  margin: auto;
   border-radius: 50%;
   box-shadow: 0 5px 10px rgba(34,25,36,.2);
   border: 2px solid white;
@@ -30,7 +31,7 @@ const Button = styled.button`
     border: 2px solid #7f187f;
     color: #7f187f;
   }
-  display: ${(props) => isDisplayed(props)}
+  visibility: ${(props) => isDisplayed(props)}
 `;
 
 export default Button;
