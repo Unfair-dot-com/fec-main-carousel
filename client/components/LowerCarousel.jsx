@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React from 'react';
@@ -39,8 +40,31 @@ class LowerCarousel extends React.Component {
       // Calculates number of thumbnails that will fit evenly into the carousel width
       // TODO: make this generate dynamically based on width of parent div
       numOfThumbnails: Math.floor((500 - 48 * 2 - 8) / 70),
+      carouselPosition: 0,
     };
     this.thumbnailLoader = this.thumbnailLoader.bind(this);
+  }
+
+  componentDidUpdate() {
+    const { activeThumbnail, images } = this.props;
+    const { firstVisibleThumbnail, numOfThumbnails } = this.state;
+
+    // checks if new selected Thumbnail is currently hidden to the right
+    const isHidden = activeThumbnail > firstVisibleThumbnail + numOfThumbnails - 1
+      && activeThumbnail < images.length;
+
+    console.log('isHidden: ', isHidden);
+    if (isHidden) {
+      // if so, move the carousel to the left
+      this.setState((state) => {
+        state.carouselPosition -= 70;
+        state.firstVisibleThumbnail += 1;
+        return {
+          carouselPosition: state.carouselPosition,
+          firstVisibleThumbnail: state.firstVisibleThumbnail,
+        };
+      });
+    }
   }
 
   thumbnailLoader() {
