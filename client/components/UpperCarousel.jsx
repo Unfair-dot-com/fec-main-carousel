@@ -1,5 +1,31 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import styled from 'styled-components';
 import Button from './Button';
+
+const StyledUpperCarousel = styled.div`
+  display: grid;
+  grid-template-columns: 48px auto 48px;
+  grid-template-rows: 100%;
+  max-height: 500px;
+  max-width: 500px;
+`;
+
+const StyledImage = styled.img`
+  max-height: 500px;
+  grid-area: 1 / 1 / 2 / 4;
+  z-index: 0;
+`;
+
+const LeftStyledButton = styled(Button)`
+  grid-area: 1 / 1 / 2 / 2;
+  z-index: 1;
+`;
+
+const RightStyledButton = styled(Button)`
+  grid-area: 1 / 3 / 2 / 4;
+  z-index: 2;
+`;
 
 class UpperCarousel extends React.Component {
   constructor(props) {
@@ -10,29 +36,24 @@ class UpperCarousel extends React.Component {
   }
 
   render() {
-    // TODO replace this with a style sheet
-    const imgStyle = {
-      maxHeight: '500px',
-    };
-
     // sets a default value for the url, since state data
     // isn't available when the page first renders
     const { handleButtonClick, images, numberOfImages, activeThumbnail } = this.props;
     const imageURL = images.length > 0
-      ? images[0].fullSizeURL : undefined;
+      ? images[2].fullSizeURL : undefined;
 
     return (
-      <div className="product-image">
-        <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+      <StyledUpperCarousel className="product-image">
+        <LeftStyledButton className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &lt;
-        </Button>
+        </LeftStyledButton>
 
-        <img alt="Click to Zoom" src={imageURL} style={imgStyle} />
+        <StyledImage alt="Click to Zoom" src={imageURL} />
 
-        <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+        <RightStyledButton className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
           &gt;
-        </Button>
-      </div>
+        </RightStyledButton>
+      </StyledUpperCarousel>
     );
   }
 }

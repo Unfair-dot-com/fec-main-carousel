@@ -2,8 +2,13 @@
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import UpperCarousel from './UpperCarousel';
 import LowerCarousel from './LowerCarousel';
+
+const StyledApp = styled.div`
+  background-color: white;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -61,8 +66,9 @@ class App extends React.Component {
 
   render() {
     const { images, numberOfImages, activeThumbnail } = this.state;
+    const { className } = this.props;
     return (
-      <div>
+      <StyledApp className={className}>
         <UpperCarousel
           images={images}
           numberOfImages={numberOfImages}
@@ -77,7 +83,7 @@ class App extends React.Component {
           handleButtonClick={this.handleButtonClick}
           handleThumbnailClick={this.handleThumbnailClick}
         />
-      </div>
+      </StyledApp>
     );
   }
 }
