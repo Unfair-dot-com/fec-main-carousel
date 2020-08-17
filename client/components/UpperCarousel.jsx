@@ -7,6 +7,7 @@ import Button from './Button';
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`
   max-height: 500px;
+  //overflow: hidden;
 `;
 
 // make this the carousel
@@ -40,10 +41,28 @@ class UpperCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visibleThumbnail: 0,
-      carouselPosition: 0
+      visibleImage: 0,
+      carouselPosition: 0,
     };
     this.imageLoader = this.imageLoader.bind(this);
+  }
+
+  componentDidUpdate() {
+    const { activeThumbnail, images } = this.props;
+    const { visibleImage } = this.state;
+    // checks if activeThumbnail is the same as visible image
+    if (activeThumbnail !== visibleImage) {
+      // calculates how many pixels to move the carousel
+      const changeInPosition = (visibleImage - activeThumbnail) * 500;
+      // updates the carouselPosition
+      this.setState((prevState) => {
+        prevState.carouselPosition += changeInPosition;
+        return {
+          carouselPosition: prevState.carouselPosition,
+          visibleImage: activeThumbnail,
+        };
+      });
+    }
   }
 
   imageLoader() {
