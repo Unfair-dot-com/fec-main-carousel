@@ -3,6 +3,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import styled from 'styled-components';
+import Grid from './Grid';
 import Thumbnail from './Thumbnail';
 import Button from './Button';
 
@@ -11,14 +12,12 @@ const GridWrapper = styled.div`
   width: 500px;
 `;
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: 48px auto 48px;
-  grid-template-rows: 100%;
+// inherits grid properties and max-width from Grid component
+const GridContainer = styled(Grid)`
   margin: 0 auto;
-  width: 500px;
 `;
 
+// calculates width dynamically
 const CarouselWrapper = styled.div`
   padding: 12px 4px;
   width: ${(props) => props.numOfThumbnails * 70}px;
@@ -54,17 +53,17 @@ class LowerCarousel extends React.Component {
     const { firstVisibleThumbnail, numOfThumbnails } = this.state;
 
     // checks if new selected Thumbnail is currently hidden to the right
-    let isHidden = activeThumbnail > firstVisibleThumbnail + numOfThumbnails - 1
+    let isHidden = activeThumbnail > (firstVisibleThumbnail + numOfThumbnails - 1)
       && activeThumbnail < images.length;
 
     if (isHidden) {
       // if so, move the carousel to the left
-      this.setState((state) => {
-        state.carouselPosition -= 70;
-        state.firstVisibleThumbnail += 1;
+      this.setState((prevState) => {
+        prevState.carouselPosition -= 70;
+        prevState.firstVisibleThumbnail += 1;
         return {
-          carouselPosition: state.carouselPosition,
-          firstVisibleThumbnail: state.firstVisibleThumbnail,
+          carouselPosition: prevState.carouselPosition,
+          firstVisibleThumbnail: prevState.firstVisibleThumbnail,
         };
       });
       return;
@@ -74,12 +73,12 @@ class LowerCarousel extends React.Component {
 
     if (isHidden) {
       // if so, move the carousel to the right
-      this.setState((state) => {
-        state.carouselPosition += 70;
-        state.firstVisibleThumbnail -= 1;
+      this.setState((prevState) => {
+        prevState.carouselPosition += 70;
+        prevState.firstVisibleThumbnail -= 1;
         return {
-          carouselPosition: state.carouselPosition,
-          firstVisibleThumbnail: state.firstVisibleThumbnail,
+          carouselPosition: prevState.carouselPosition,
+          firstVisibleThumbnail: prevState.firstVisibleThumbnail,
         };
       });
     }
@@ -109,15 +108,25 @@ class LowerCarousel extends React.Component {
     return (
       <GridWrapper>
         <GridContainer className="lower-carousel-wrapper">
-          <Button className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+          <Button
+            className="left-button"
+            onClick={handleButtonClick}
+            number={numberOfImages}
+            activeThumbnail={activeThumbnail}
+          >
             &lt;
           </Button>
-          <CarouselWrapper className="lower-carousel" numOfThumbnails={numOfThumbnails}>
+          <CarouselWrapper numOfThumbnails={numOfThumbnails}>
             <InnerCarousel position={carouselPosition}>
               {this.thumbnailLoader()}
             </InnerCarousel>
           </CarouselWrapper>
-          <Button className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+          <Button
+            className="right-button"
+            onClick={handleButtonClick}
+            number={numberOfImages}
+            activeThumbnail={activeThumbnail}
+          >
             &gt;
           </Button>
         </GridContainer>

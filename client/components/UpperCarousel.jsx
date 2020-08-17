@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import Grid from './Grid';
 import Button from './Button';
 
-const StyledUpperCarousel = styled.div`
-  display: grid;
-  grid-template-columns: 48px auto 48px;
-  grid-template-rows: 100%;
+// inherits grid properties and max-width from Grid component
+const StyledUpperCarousel = styled(Grid)`
   max-height: 500px;
-  max-width: 500px;
 `;
 
 const StyledImage = styled.img`
@@ -38,19 +36,31 @@ class UpperCarousel extends React.Component {
   render() {
     // sets a default value for the url, since state data
     // isn't available when the page first renders
-    const { handleButtonClick, images, numberOfImages, activeThumbnail } = this.props;
+    const {
+      handleButtonClick, images, numberOfImages, activeThumbnail,
+    } = this.props;
     const imageURL = images.length > 0
       ? images[2].fullSizeURL : undefined;
 
     return (
       <StyledUpperCarousel className="product-image">
-        <LeftStyledButton className="left-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+        <LeftStyledButton
+          className="left-button"
+          onClick={handleButtonClick}
+          number={numberOfImages}
+          activeThumbnail={activeThumbnail}
+        >
           &lt;
         </LeftStyledButton>
 
         <StyledImage alt="Click to Zoom" src={imageURL} />
 
-        <RightStyledButton className="right-button" onClick={handleButtonClick} number={numberOfImages} activeThumbnail={activeThumbnail}>
+        <RightStyledButton
+          className="right-button"
+          onClick={handleButtonClick}
+          number={numberOfImages}
+          activeThumbnail={activeThumbnail}
+        >
           &gt;
         </RightStyledButton>
       </StyledUpperCarousel>

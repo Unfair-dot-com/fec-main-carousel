@@ -7,7 +7,7 @@ import UpperCarousel from './UpperCarousel';
 import LowerCarousel from './LowerCarousel';
 
 const StyledApp = styled.div`
-  background-color: white;
+  background-color: #fff;
 `;
 
 class App extends React.Component {
@@ -43,16 +43,16 @@ class App extends React.Component {
     // if right button is clicked, increment activeThumbnail
     if (className.indexOf('right') !== -1) {
       console.log('right button clicked!');
-      this.setState((state) => {
-        state.activeThumbnail += 1;
-        return { activeThumbnail: state.activeThumbnail };
+      this.setState((prevState) => {
+        prevState.activeThumbnail += 1;
+        return { activeThumbnail: prevState.activeThumbnail };
       });
     // if left button is clicked, decrement activeThumbnail
     } else if (className.indexOf('left') !== -1) {
       console.log('left button clicked!');
-      this.setState((state) => {
-        state.activeThumbnail -= 1;
-        return { activeThumbnail: state.activeThumbnail };
+      this.setState((prevState) => {
+        prevState.activeThumbnail -= 1;
+        return { activeThumbnail: prevState.activeThumbnail };
       });
     }
   }
