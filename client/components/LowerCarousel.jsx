@@ -53,7 +53,6 @@ class LowerCarousel extends React.Component {
     let isHidden = activeThumbnail > firstVisibleThumbnail + numOfThumbnails - 1
       && activeThumbnail < images.length;
 
-    console.log('isHidden right: ', isHidden);
     if (isHidden) {
       // if so, move the carousel to the left
       this.setState((state) => {
