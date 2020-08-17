@@ -6,9 +6,11 @@ import styled from 'styled-components';
 import Thumbnail from './Thumbnail';
 import Button from './Button';
 
+// helps center the grid container
 const GridWrapper = styled.div`
   width: 500px;
 `;
+
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 48px auto 48px;
@@ -21,8 +23,10 @@ const CarouselWrapper = styled.div`
   padding: 12px 4px;
   width: ${(props) => props.numOfThumbnails * 70}px;
   overflow: hidden;
+  margin: 0 auto;
 `;
 
+// left is dynamically generated based on current carousel position
 const InnerCarousel = styled.div`
   display: flex;
   flex-direction: row;
@@ -38,7 +42,7 @@ class LowerCarousel extends React.Component {
     this.state = {
       firstVisibleThumbnail: 0,
       // Calculates number of thumbnails that will fit evenly into the carousel width
-      // TODO: make this generate dynamically based on width of parent div
+      // TODO: replace the 500 to make it dynamically generate based on width of parent div
       numOfThumbnails: Math.floor((500 - 48 * 2 - 8) / 70),
       carouselPosition: 0,
     };
