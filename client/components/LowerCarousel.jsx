@@ -3,14 +3,9 @@
 /* eslint-disable no-console */
 import React from 'react';
 import styled from 'styled-components';
-import Grid from './Grid';
+import { Grid, GridWrapper } from './Grid';
 import Thumbnail from './Thumbnail';
 import Button from './Button';
-
-// helps center the grid container
-const GridWrapper = styled.div`
-  width: 500px;
-`;
 
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`

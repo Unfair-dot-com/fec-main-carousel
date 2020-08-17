@@ -72,8 +72,8 @@ class App extends React.Component {
         <UpperCarousel
           images={images}
           numberOfImages={numberOfImages}
-          handleButtonClick={this.handleButtonClick}
           activeThumbnail={activeThumbnail}
+          handleButtonClick={this.handleButtonClick}
         />
         <br />
         <LowerCarousel
