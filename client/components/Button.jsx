@@ -17,7 +17,7 @@ const isDisplayed = (props) => {
 };
 
 const Button = styled.button`
-  background: #fff;
+  background-color: #fff;
   font-family: 'Poppins', arial, sans-serif;
   font-size: 125%;
   text-align: center;
@@ -25,12 +25,16 @@ const Button = styled.button`
   height: 48px;
   margin: auto 0;
   border-radius: 50%;
-  box-shadow: 0 5px 10px rgba(34,25,36,.2);
-  border: 2px solid #fff;
+  box-shadow: 0 3px 6px rgba(34,25,36,.2);
+  border: 2px solid transparent;
   &:hover {
     border: 2px solid #7f187f;
     color: #7f187f;
+    background-color: light-grey;
   }
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(.65, .05, .36, 1);
+  transition-property: background-color, transform,color, border-color, margin;
   visibility: ${(props) => isDisplayed(props)};
   cursor: pointer;
 `;
