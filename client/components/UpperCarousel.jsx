@@ -7,18 +7,18 @@ import Button from './Button';
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`
   max-height: 500px;
-  //overflow: hidden;
+  overflow: hidden;
 `;
 
 // make this the carousel
 const StyledImage = styled.img`
   max-height: 500px;
-  grid-area: 1 / 1 / 2 / 4;
-  z-index: 0;
 `;
 
 // left is dynamically generated based on current carousel position
 const InnerCarousel = styled.div`
+  grid-area: 1 / 1 / 2 / 4;
+  z-index: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
