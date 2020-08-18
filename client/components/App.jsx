@@ -42,14 +42,12 @@ class App extends React.Component {
 
     // if right button is clicked, increment activeThumbnail
     if (className.indexOf('right') !== -1) {
-      console.log('right button clicked!');
       this.setState((prevState) => {
         prevState.activeThumbnail += 1;
         return { activeThumbnail: prevState.activeThumbnail };
       });
     // if left button is clicked, decrement activeThumbnail
     } else if (className.indexOf('left') !== -1) {
-      console.log('left button clicked!');
       this.setState((prevState) => {
         prevState.activeThumbnail -= 1;
         return { activeThumbnail: prevState.activeThumbnail };
