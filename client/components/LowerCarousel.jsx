@@ -1,6 +1,5 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-console */
 import React from 'react';
 import styled from 'styled-components';
 import { Grid, GridWrapper } from './Grid';
@@ -55,11 +54,11 @@ class LowerCarousel extends React.Component {
     if (isHidden) {
       // if so, move the carousel to the left
       this.setState((prevState) => {
-        prevState.carouselPosition -= 70;
-        prevState.firstVisibleThumbnail += 1;
+        const newPosition = prevState.carouselPosition - 70;
+        const newThumbnail = prevState.firstVisibleThumbnail + 1;
         return {
-          carouselPosition: prevState.carouselPosition,
-          firstVisibleThumbnail: prevState.firstVisibleThumbnail,
+          carouselPosition: newPosition,
+          firstVisibleThumbnail: newThumbnail,
         };
       });
       return;
@@ -70,11 +69,11 @@ class LowerCarousel extends React.Component {
     if (isHidden) {
       // if so, move the carousel to the right
       this.setState((prevState) => {
-        prevState.carouselPosition += 70;
-        prevState.firstVisibleThumbnail -= 1;
+        const newPosition = prevState.carouselPosition + 70;
+        const newThumbnail = prevState.firstVisibleThumbnail - 1;
         return {
-          carouselPosition: prevState.carouselPosition,
-          firstVisibleThumbnail: prevState.firstVisibleThumbnail,
+          carouselPosition: newPosition,
+          firstVisibleThumbnail: newThumbnail,
         };
       });
     }

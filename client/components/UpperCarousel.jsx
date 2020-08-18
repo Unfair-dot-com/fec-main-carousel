@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
@@ -53,7 +54,7 @@ class UpperCarousel extends React.Component {
   }
 
   componentDidUpdate() {
-    const { activeThumbnail, images } = this.props;
+    const { activeThumbnail } = this.props;
     const { visibleImage } = this.state;
     // checks if activeThumbnail is the same as visible image
     if (activeThumbnail !== visibleImage) {
@@ -61,9 +62,9 @@ class UpperCarousel extends React.Component {
       const changeInPosition = (visibleImage - activeThumbnail) * 500;
       // updates the carouselPosition
       this.setState((prevState) => {
-        prevState.carouselPosition += changeInPosition;
+        const newPosition = prevState.carouselPosition + changeInPosition;
         return {
-          carouselPosition: prevState.carouselPosition,
+          carouselPosition: newPosition,
           visibleImage: activeThumbnail,
         };
       });
@@ -71,7 +72,7 @@ class UpperCarousel extends React.Component {
   }
 
   imageLoader() {
-    const { images, activeThumbnail, handleThumbnailClick } = this.props;
+    const { images } = this.props;
     // checks to see if images have loaded yet
     if (images.length > 0) {
       // if so, constructs thumbnails in the carousel
@@ -90,12 +91,9 @@ class UpperCarousel extends React.Component {
     // sets a default value for the url, since state data
     // isn't available when the page first renders
     const {
-      handleButtonClick, images, numberOfImages, activeThumbnail,
+      handleButtonClick, numberOfImages, activeThumbnail,
     } = this.props;
     const { carouselPosition } = this.state;
-
-    const imageURL = images.length > 0
-      ? images[2].fullSizeURL : undefined;
 
     return (
       <GridWrapper>

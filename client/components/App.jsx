@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
@@ -43,14 +43,14 @@ class App extends React.Component {
     // if right button is clicked, increment activeThumbnail
     if (className.indexOf('right') !== -1) {
       this.setState((prevState) => {
-        prevState.activeThumbnail += 1;
-        return { activeThumbnail: prevState.activeThumbnail };
+        const newThumbnail = prevState.activeThumbnail + 1;
+        return { activeThumbnail: newThumbnail };
       });
     // if left button is clicked, decrement activeThumbnail
     } else if (className.indexOf('left') !== -1) {
       this.setState((prevState) => {
-        prevState.activeThumbnail -= 1;
-        return { activeThumbnail: prevState.activeThumbnail };
+        const newThumbnail = prevState.activeThumbnail - 1;
+        return { activeThumbnail: newThumbnail };
       });
     }
   }
