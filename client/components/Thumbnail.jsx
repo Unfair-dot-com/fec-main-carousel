@@ -8,6 +8,7 @@ const Thumbnail = styled.img`
     : '2px solid #fff')};
   border-radius:10px;
   margin: 5px;
+  cursor: pointer;
 `;
 
 export default Thumbnail;

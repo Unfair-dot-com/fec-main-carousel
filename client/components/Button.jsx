@@ -32,6 +32,7 @@ const Button = styled.button`
     color: #7f187f;
   }
   visibility: ${(props) => isDisplayed(props)};
+  cursor: pointer;
 `;
 
 export default Button;

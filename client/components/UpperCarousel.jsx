@@ -29,6 +29,7 @@ const InnerCarousel = styled.div`
 // the inner-most element of the carousel
 const StyledImage = styled.img`
   max-height: 500px;
+  cursor: zoom-in;
 `;
 
 const LeftStyledButton = styled(Button)`
