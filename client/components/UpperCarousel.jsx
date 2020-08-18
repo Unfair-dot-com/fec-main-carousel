@@ -21,7 +21,8 @@ const InnerCarousel = styled.div`
   flex-direction: row;
   align-items: center;
   position: relative;
-  left: ${(props) => props.position}px;
+  transform: translateX(${(props) => props.position}px);
+  transition: transform 250ms cubic-bezier(0.53,0.34,0.51,0.9) 0s;
   width: 100%;
 `;
 
