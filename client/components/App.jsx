@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import UpperCarousel from './UpperCarousel';
 import LowerCarousel from './LowerCarousel';
 
+const serverURL = 'http://localhost:5001';
+
 const StyledApp = styled.div`
   background-color: #fff;
 `;
@@ -26,7 +28,7 @@ class App extends React.Component {
   // gets the list of all images for this product
   componentDidMount() {
     const { productId } = this.state;
-    axios.get(`/images/${productId}`)
+    axios.get(`${serverURL}/images/${productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,
