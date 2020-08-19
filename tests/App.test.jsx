@@ -4,19 +4,19 @@ import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
 import { shallow, mount, render } from 'enzyme';
 import App from '../client/components/App';
-import Image from '../client/components/Image';
-import Carousel from '../client/components/Carousel';
+import UpperCarousel from '../client/components/UpperCarousel';
+import LowerCarousel from '../client/components/LowerCarousel';
 
 describe('App with Enzyme', () => {
   it('renders without crashing', () => {
     shallow(<App />);
   });
 
-  it('renders an Image, a Carousel and four arrows', () => {
+  it('renders two Carousels', () => {
     const wrapper = shallow(<App />, { disableLifecycleMethods: true });
-    expect(wrapper.find(Image).length).toBe(1);
-    expect(wrapper.find(Carousel).length).toBe(1);
-    // expect(wrapper.find(Arrow).length).toBe(4);
+    expect(wrapper.find(UpperCarousel).length).toBe(1);
+    expect(wrapper.find(LowerCarousel).length).toBe(1);
+    //expect(wrapper.find(Arrow).length).toBe(4);
   });
 });
 

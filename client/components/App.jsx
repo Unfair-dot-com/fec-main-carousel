@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
@@ -6,8 +6,10 @@ import styled from 'styled-components';
 import UpperCarousel from './UpperCarousel';
 import LowerCarousel from './LowerCarousel';
 
+const serverURL = 'http://localhost:5001';
+
 const StyledApp = styled.div`
-  background-color: white;
+  background-color: #fff;
 `;
 
 class App extends React.Component {
@@ -26,7 +28,7 @@ class App extends React.Component {
   // gets the list of all images for this product
   componentDidMount() {
     const { productId } = this.state;
-    axios.get(`/images/${productId}`)
+    axios.get(`${serverURL}/images/${productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,
@@ -42,17 +44,15 @@ class App extends React.Component {
 
     // if right button is clicked, increment activeThumbnail
     if (className.indexOf('right') !== -1) {
-      console.log('right button clicked!');
-      this.setState((state) => {
-        state.activeThumbnail += 1;
-        return { activeThumbnail: state.activeThumbnail };
+      this.setState((prevState) => {
+        const newThumbnail = prevState.activeThumbnail + 1;
+        return { activeThumbnail: newThumbnail };
       });
     // if left button is clicked, decrement activeThumbnail
     } else if (className.indexOf('left') !== -1) {
-      console.log('left button clicked!');
-      this.setState((state) => {
-        state.activeThumbnail -= 1;
-        return { activeThumbnail: state.activeThumbnail };
+      this.setState((prevState) => {
+        const newThumbnail = prevState.activeThumbnail - 1;
+        return { activeThumbnail: newThumbnail };
       });
     }
   }
@@ -72,8 +72,8 @@ class App extends React.Component {
         <UpperCarousel
           images={images}
           numberOfImages={numberOfImages}
-          handleButtonClick={this.handleButtonClick}
           activeThumbnail={activeThumbnail}
+          handleButtonClick={this.handleButtonClick}
         />
         <br />
         <LowerCarousel
