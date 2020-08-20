@@ -50,6 +50,8 @@ class UpperCarousel extends React.Component {
       visibleImage: 0,
       carouselPosition: 0,
     };
+    // used to measure width of the carousel wrapper
+    this.imageWidthRef = React.createRef();
     this.imageLoader = this.imageLoader.bind(this);
   }
 
@@ -59,7 +61,8 @@ class UpperCarousel extends React.Component {
     // checks if activeThumbnail is the same as visible image
     if (activeThumbnail !== visibleImage) {
       // calculates how many pixels to move the carousel
-      const changeInPosition = (visibleImage - activeThumbnail) * 500;
+      const changeInPosition = (visibleImage - activeThumbnail)
+        * this.imageWidthRef.current.clientWidth;
       // updates the carouselPosition
       this.setState((prevState) => {
         const newPosition = prevState.carouselPosition + changeInPosition;
@@ -106,7 +109,7 @@ class UpperCarousel extends React.Component {
           >
             &lt;
           </LeftStyledButton>
-          <CarouselWrapper>
+          <CarouselWrapper ref={this.imageWidthRef}>
             <InnerCarousel position={carouselPosition}>
               {this.imageLoader()}
             </InnerCarousel>
