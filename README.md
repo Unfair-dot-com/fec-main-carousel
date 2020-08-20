@@ -40,6 +40,7 @@ npm install
 
 ### Step 2: Install MongoDB
 Follow the instructions for your set up at https://www.mongodb.com/try
+The database name is fec
 
 ### Seed the Database
 npm run seed
