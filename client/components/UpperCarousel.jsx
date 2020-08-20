@@ -7,7 +7,7 @@ import Button from './Button';
 
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`
-  max-height: 500px;
+  max-width: 45vw;
 `;
 
 const CarouselWrapper = styled.div`
@@ -29,7 +29,7 @@ const InnerCarousel = styled.div`
 
 // the inner-most element of the carousel
 const StyledImage = styled.img`
-  max-height: 500px;
+  max-width: 100%;
   cursor: zoom-in;
 `;
 

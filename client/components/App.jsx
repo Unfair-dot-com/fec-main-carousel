@@ -10,6 +10,7 @@ const serverURL = 'http://localhost:5001';
 
 const StyledApp = styled.div`
   background-color: #fff;
+  width: 45vw;
 `;
 
 class App extends React.Component {
