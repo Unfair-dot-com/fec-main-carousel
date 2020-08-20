@@ -10,13 +10,13 @@ const GridContainer = styled(Grid)`
   max-width: 45vw;
 `;
 
-const CarouselWrapper = styled.div`
+const CarouselAnchor = styled.div`
   overflow: hidden;
   grid-area: 1 / 1 / 2 / 4;
 `;
 
 // left is dynamically generated based on current carousel position
-const InnerCarousel = styled.div`
+const CarouselSlider = styled.div`
   z-index: 0;
   display: flex;
   flex-direction: row;
@@ -109,11 +109,11 @@ class UpperCarousel extends React.Component {
           >
             &lt;
           </LeftStyledButton>
-          <CarouselWrapper ref={this.imageWidthRef}>
-            <InnerCarousel position={carouselPosition}>
+          <CarouselAnchor ref={this.imageWidthRef}>
+            <CarouselSlider position={carouselPosition}>
               {this.imageLoader()}
-            </InnerCarousel>
-          </CarouselWrapper>
+            </CarouselSlider>
+          </CarouselAnchor>
           <RightStyledButton
             className="right-button"
             onClick={handleButtonClick}

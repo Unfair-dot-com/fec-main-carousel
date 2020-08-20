@@ -12,7 +12,7 @@ const GridContainer = styled(Grid)`
 `;
 
 // calculates width dynamically
-const CarouselWrapper = styled.div`
+const CarouselAnchor = styled.div`
   padding: 12px 4px;
   width: ${(props) => props.numOfThumbnails * 70}px;
   overflow: hidden;
@@ -20,7 +20,7 @@ const CarouselWrapper = styled.div`
 `;
 
 // left is dynamically generated based on current carousel position
-const InnerCarousel = styled.div`
+const CarouselSlider = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -111,11 +111,11 @@ class LowerCarousel extends React.Component {
           >
             &lt;
           </Button>
-          <CarouselWrapper numOfThumbnails={numOfThumbnails}>
-            <InnerCarousel position={carouselPosition}>
+          <CarouselAnchor numOfThumbnails={numOfThumbnails}>
+            <CarouselSlider position={carouselPosition}>
               {this.thumbnailLoader()}
-            </InnerCarousel>
-          </CarouselWrapper>
+            </CarouselSlider>
+          </CarouselAnchor>
           <Button
             className="right-button"
             onClick={handleButtonClick}
