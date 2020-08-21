@@ -9,8 +9,10 @@
   },
   "scripts": {
     "seed": "node database/seed.js",
-    "start": "nodemon ./server/server.js",
-    "build": "webpack --config webpack.config.js --watch --watch-poll",
+    "start": "node .server/server.js",
+    "start-dev": "nodemon ./server/server.js",
+    "build": "webpack --config webpack.config.js",
+    "build-dev": "webpack --config webpack.config.js --watch --watch-poll",
     "test": "jest"
   },
   "jest": {
@@ -37,12 +39,11 @@
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
-    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1"
   },
   "devDependencies": {
-
+    "babel-jest": "^26.3.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^7.6.0",

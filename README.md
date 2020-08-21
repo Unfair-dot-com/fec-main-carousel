@@ -41,12 +41,20 @@ The database name is fec.
 If you are setting up on an Ubuntu, use this guide: https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-ubuntu/
 
 ### Seed the Database
+From within the root directory:
 npm run seed
 
 Once finished, ctrl-c should return control to the terminal
 If you run into any problems, the seed file is database/seed.js.
 
+### Build the webpack bundle
+From within the root directory:
+
+npm run build
+
 ### Start the Server
+From within the root directory:
+
 npm start
 
 Current port is set to 5001. You can change this from within server/server.js.
