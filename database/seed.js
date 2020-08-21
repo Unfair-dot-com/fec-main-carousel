@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-const { Picture } = require('./database.js');
+const { db, Picture } = require('./database.js');
 
 const baseURL = 'https://fec-hrr47.s3.us-east-2.amazonaws.com/';
 const folder = {
@@ -15,6 +16,7 @@ const fileName = {
   product0Full: 'sunMoon',
   product0Thumbnail: 'sunMoon_thumbnail',
 };
+let errored = false;
 
 var randNumGenerator = (min, max) => Math.floor((Math.random() * max) + min);
 
@@ -36,8 +38,12 @@ for (let id = 1; id < 100; id += 1) {
     });
 
     // save to the database
+    // eslint-disable-next-line no-loop-func
     picture.save((err) => {
-      if (err) console.log('an error occurred writing to database: ', err);
+      if (err) {
+        console.log('an error occurred writing to database: ', err);
+        errored = true;
+      }
     });
   }
 }
@@ -56,8 +62,15 @@ for (var index = 1; index < 10; index += 1) {
   });
 
   // save to the database
-  picture.save((err, picture) => {
+  picture.save((err) => {
     if (err) return console.log('an error occurred writing to database: ', err);
     return undefined;
   });
 }
+
+/*
+if (!errored) {
+  console.log('👽 The image database has been seeded! 👽');
+}
+db.close();
+*/
