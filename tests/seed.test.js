@@ -56,7 +56,7 @@ describe('seed script generates correct random data', () => {
     });
   });
 
-  test.skip('the pictureId is in the acceptable range', () => {
+  test('the pictureId is in the acceptable range', () => {
     // iterates through all records
     allRecords.forEach((record) => {
       // isolate the last 9 digits of the fullSizeURL and change to a Number
