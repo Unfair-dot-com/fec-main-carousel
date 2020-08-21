@@ -30,25 +30,23 @@
 - "styled-components": "^5.1.1"
 
 ### Step 1: Install Dependencies
-
 From within the root directory:
 
-```sh
-npm install -g webpack
-npm install
-```
+npm install --production
 
 ### Step 2: Install MongoDB
-Follow the instructions for your set up at https://www.mongodb.com/try
-The database name is fec
+Follow the instructions for your set up to install the community version, at least version 4.2 at https://www.mongodb.com/try
+The database name is fec.
+
+If you are setting up on an Ubuntu, use this guide: https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-ubuntu/
 
 ### Seed the Database
 npm run seed
 
+Once finished, ctrl-c should return control to the terminal
 If you run into any problems, the seed file is database/seed.js.
 
 ### Start the Server
 npm start
 
 Current port is set to 5001. You can change this from within server/server.js.
-

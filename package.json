@@ -31,15 +31,18 @@
     "react": "^16.13.1",
     "react-dev": "0.0.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.1.1"
-  },
-  "devDependencies": {
+    "styled-components": "^5.1.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
-    "babel-plugin-styled-components": "^1.11.1",
+    "babel-plugin-styled-components": "^1.11.1"
+  },
+  "devDependencies": {
+
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^7.6.0",
@@ -53,8 +56,6 @@
     "jest-puppeteer": "^4.4.0",
     "nodemon": "^2.0.4",
     "puppeteer": "^5.2.1",
-    "react-test-renderer": "^16.13.1",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "react-test-renderer": "^16.13.1"
   }
 }
