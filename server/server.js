@@ -2,7 +2,7 @@ const express = require('express');
 const database = require('../database/database.js');
 
 const app = express();
-const port = 5001;
+const port = process.env.PORT || 5001;
 
 app.use((req, res, next) => {
   console.log(`serving ${req.method} request for ${req.url}`);
