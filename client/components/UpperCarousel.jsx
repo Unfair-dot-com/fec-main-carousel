@@ -7,16 +7,16 @@ import Button from './Button';
 
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`
-  max-height: 500px;
+  max-width: 45vw;
 `;
 
-const CarouselWrapper = styled.div`
+const CarouselAnchor = styled.div`
   overflow: hidden;
   grid-area: 1 / 1 / 2 / 4;
 `;
 
 // left is dynamically generated based on current carousel position
-const InnerCarousel = styled.div`
+const CarouselSlider = styled.div`
   z-index: 0;
   display: flex;
   flex-direction: row;
@@ -29,7 +29,7 @@ const InnerCarousel = styled.div`
 
 // the inner-most element of the carousel
 const StyledImage = styled.img`
-  max-height: 500px;
+  max-width: 100%;
   cursor: zoom-in;
 `;
 
@@ -50,6 +50,8 @@ class UpperCarousel extends React.Component {
       visibleImage: 0,
       carouselPosition: 0,
     };
+    // used to measure width of the carousel wrapper
+    this.imageWidthRef = React.createRef();
     this.imageLoader = this.imageLoader.bind(this);
   }
 
@@ -59,7 +61,8 @@ class UpperCarousel extends React.Component {
     // checks if activeThumbnail is the same as visible image
     if (activeThumbnail !== visibleImage) {
       // calculates how many pixels to move the carousel
-      const changeInPosition = (visibleImage - activeThumbnail) * 500;
+      const changeInPosition = (visibleImage - activeThumbnail)
+        * this.imageWidthRef.current.clientWidth;
       // updates the carouselPosition
       this.setState((prevState) => {
         const newPosition = prevState.carouselPosition + changeInPosition;
@@ -106,11 +109,11 @@ class UpperCarousel extends React.Component {
           >
             &lt;
           </LeftStyledButton>
-          <CarouselWrapper>
-            <InnerCarousel position={carouselPosition}>
+          <CarouselAnchor ref={this.imageWidthRef}>
+            <CarouselSlider position={carouselPosition}>
               {this.imageLoader()}
-            </InnerCarousel>
-          </CarouselWrapper>
+            </CarouselSlider>
+          </CarouselAnchor>
           <RightStyledButton
             className="right-button"
             onClick={handleButtonClick}

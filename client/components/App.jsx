@@ -10,6 +10,7 @@ const serverURL = 'http://ec2-3-80-148-248.compute-1.amazonaws.com';
 
 const StyledApp = styled.div`
   background-color: #fff;
+  width: 45vw;
 `;
 
 class App extends React.Component {

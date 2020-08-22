@@ -12,7 +12,7 @@ const GridContainer = styled(Grid)`
 `;
 
 // calculates width dynamically
-const CarouselWrapper = styled.div`
+const CarouselAnchor = styled.div`
   padding: 12px 4px;
   width: ${(props) => props.numOfThumbnails * 70}px;
   overflow: hidden;
@@ -20,7 +20,7 @@ const CarouselWrapper = styled.div`
 `;
 
 // left is dynamically generated based on current carousel position
-const InnerCarousel = styled.div`
+const CarouselSlider = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -37,10 +37,18 @@ class LowerCarousel extends React.Component {
       firstVisibleThumbnail: 0,
       // Calculates number of thumbnails that will fit evenly into the carousel width
       // TODO: replace the 500 to make it dynamically generate based on width of parent div
-      numOfThumbnails: Math.floor((500 - 48 * 2 - 8) / 70),
+      numOfThumbnails: 0,
       carouselPosition: 0,
     };
+    this.carouselRef = React.createRef();
     this.thumbnailLoader = this.thumbnailLoader.bind(this);
+  }
+
+  componentDidMount() {
+    // calculates how many thumbnails will fit evenly into the carousel
+    const carouselWidth = this.carouselRef.current.clientWidth;
+    const numOfThumbnails = Math.floor((carouselWidth - 48 * 2 - 8) / 70);
+    this.setState({ numOfThumbnails });
   }
 
   componentDidUpdate() {
@@ -102,7 +110,9 @@ class LowerCarousel extends React.Component {
 
     return (
       <GridWrapper>
-        <GridContainer className="lower-carousel-wrapper">
+        <GridContainer
+          ref={this.carouselRef}
+        >
           <Button
             className="left-button"
             onClick={handleButtonClick}
@@ -111,11 +121,11 @@ class LowerCarousel extends React.Component {
           >
             &lt;
           </Button>
-          <CarouselWrapper numOfThumbnails={numOfThumbnails}>
-            <InnerCarousel position={carouselPosition}>
+          <CarouselAnchor numOfThumbnails={numOfThumbnails}>
+            <CarouselSlider position={carouselPosition}>
               {this.thumbnailLoader()}
-            </InnerCarousel>
-          </CarouselWrapper>
+            </CarouselSlider>
+          </CarouselAnchor>
           <Button
             className="right-button"
             onClick={handleButtonClick}
