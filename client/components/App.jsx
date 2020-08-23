@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import UpperCarousel from './UpperCarousel';
 import LowerCarousel from './LowerCarousel';
 
-const serverURL = 'http://ec2-3-80-148-248.compute-1.amazonaws.com';
+const serverURL = 'http://ec2-3-80-148-248.compute-1.amazonaws.com:5001';
 
 const StyledApp = styled.div`
   background-color: #fff;
