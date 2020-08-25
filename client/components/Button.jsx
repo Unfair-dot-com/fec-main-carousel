@@ -19,11 +19,11 @@ const isDisplayed = (props) => {
 const Button = styled.button`
   background-color: #fff;
   font-family: 'Poppins', arial, sans-serif;
-  font-size: 125%;
+  font-size: 100%;
   text-align: center;
-  width: 48px;
-  height: 48px;
-  margin: auto 0;
+  width: 36px;
+  height: 36px;
+  margin: auto;
   border-radius: 50%;
   box-shadow: 0 3px 6px rgba(34,25,36,.2);
   border: 2px solid transparent;

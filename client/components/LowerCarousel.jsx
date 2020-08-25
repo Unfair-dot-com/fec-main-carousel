@@ -9,6 +9,7 @@ import Button from './Button';
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`
   margin: 0 auto;
+  max-width: 85%;
 `;
 
 // calculates width dynamically
