@@ -29,8 +29,8 @@ class App extends React.Component {
   // gets the list of all images for this product
   componentDidMount() {
     const { productId } = this.state;
-    // axios.get(`/images/${productId}`)
-    axios.get(`${serverURL}/images/${productId}`)
+    axios.get(`/images/${productId}`)
+    //axios.get(`${serverURL}/images/${productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,
@@ -90,3 +90,23 @@ class App extends React.Component {
 }
 
 export default App;
+
+/**
+ * Zoom feature:
+ * On mouse-over of the upper carousel,
+ * Also, a translucent square appears on the upper carousel
+ * The square is just over 1/3 the width/height of the upper picture
+ * The square tracks the movement of the mouse so that the mouse stays in the center of the square,
+ *  except that the edge of the square does not run over the side of the uppper carousel.
+ *
+ * Step 1: Trigger a very simple mouseover action on the upper carousel
+ * Step 2: use this mouseover to toggle a new component
+ * Step 3: Create the code to track mouse position and update it in state?
+ * Step 4: Create the translucent box, feed it the updated mouse position
+ * Step 5: Adjust so that mouse stays centered in the box, until box is about to go out of bounds
+ * Step 6: Change zoomed component to be a larger picture
+ * Step 7: Invert the movement of the zoomed picture so that it appears to track the mouse
+ *
+ * Simultaneously, another component appears to the right of the upper carousel
+ * It perfectly displays the portion of the picture which is covered by the translucent square
+ */
