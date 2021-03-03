@@ -1,4 +1,4 @@
-# Project Name - Unfair Main Image and Carousel
+# Project Name - Home.com Main Image and Carousel
 
 > Project description
 
