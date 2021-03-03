@@ -29,8 +29,8 @@ class App extends React.Component {
   // gets the list of all images for this product
   componentDidMount() {
     const { productId } = this.state;
-    // axios.get(`/images/${productId}`)
-    axios.get(`${serverURL}/images/${productId}`)
+    axios.get(`/images/${productId}`)
+    //axios.get(`${serverURL}/images/${productId}`)
       .then((pictures) => {
         this.setState({
           images: pictures.data,
