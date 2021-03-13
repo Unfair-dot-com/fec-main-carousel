@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GridWrapper, Grid } from './Grid';
 import Button from './Button';
-import StyledZoom from './Zoom';
+import Zoom from './Zoom';
 
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`
@@ -50,10 +50,13 @@ class UpperCarousel extends React.Component {
     this.state = {
       visibleImage: 0,
       carouselPosition: 0,
+      displayZoom: false,
     };
     // used to measure width of the carousel wrapper
     this.imageWidthRef = React.createRef();
     this.imageLoader = this.imageLoader.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   componentDidUpdate() {
@@ -75,12 +78,14 @@ class UpperCarousel extends React.Component {
     }
   }
 
-  handleMouseOver () {
+  handleMouseOver() {
     console.log('zoom-in!');
+    this.setState({ displayZoom: true });
   };
 
-  handleMouseLeave () {
-    console.log('zoom-out!')
+  handleMouseLeave() {
+    console.log('zoom-out!');
+    this.setState({ displayZoom: false });
   }
 
   imageLoader() {
@@ -105,14 +110,14 @@ class UpperCarousel extends React.Component {
     const {
       handleButtonClick, numberOfImages, activeThumbnail,
     } = this.props;
-    const { carouselPosition } = this.state;
+    const { carouselPosition, displayZoom } = this.state;
 
     return (
       <GridWrapper
         onMouseEnter={this.handleMouseOver}
         onMouseLeave={this.handleMouseLeave}
       >
-        <StyledZoom className="zoom" />
+        <Zoom className="zoom" displayZoom={displayZoom} />
         <GridContainer className="product-image">
           <LeftStyledButton
             className="left-button"

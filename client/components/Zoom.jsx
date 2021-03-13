@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Zoom = () => (
-
-  <div>Hello!</div>
-
-);
-
 const StyledZoom = styled.div`
   width: 45vw;
   height: 45vw;
   background-color: #7f187f;
   position: absolute;
-  left: 45vw;
+  left: 48vw;
   z-index: 5;
+  display: ${(props) => (props.displayZoom === true ? 'block' : 'none')}
 `;
 
-export default StyledZoom;
+const Zoom = (props) => (
+  <StyledZoom displayZoom={props.displayZoom}>
+    Hello!
+  </StyledZoom>
+);
+
+export default Zoom;
