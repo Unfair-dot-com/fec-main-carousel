@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // helps center the grid container
 const GridWrapper = styled.div`
   width: 100%;
+  position: relative;
 `;
 
 const Grid = styled.div`

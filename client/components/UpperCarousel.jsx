@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GridWrapper, Grid } from './Grid';
 import Button from './Button';
+import StyledZoom from './Zoom';
 
 // inherits grid properties and max-width from Grid component
 const GridContainer = styled(Grid)`
@@ -111,6 +112,7 @@ class UpperCarousel extends React.Component {
         onMouseEnter={this.handleMouseOver}
         onMouseLeave={this.handleMouseLeave}
       >
+        <StyledZoom className="zoom" />
         <GridContainer className="product-image">
           <LeftStyledButton
             className="left-button"
