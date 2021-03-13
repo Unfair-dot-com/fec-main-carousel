@@ -74,6 +74,14 @@ class UpperCarousel extends React.Component {
     }
   }
 
+  handleMouseOver () {
+    console.log('zoom-in!');
+  };
+
+  handleMouseLeave () {
+    console.log('zoom-out!')
+  }
+
   imageLoader() {
     const { images } = this.props;
     // checks to see if images have loaded yet
@@ -99,7 +107,10 @@ class UpperCarousel extends React.Component {
     const { carouselPosition } = this.state;
 
     return (
-      <GridWrapper>
+      <GridWrapper
+        onMouseEnter={this.handleMouseOver}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <GridContainer className="product-image">
           <LeftStyledButton
             className="left-button"
