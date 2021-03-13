@@ -90,7 +90,7 @@ class UpperCarousel extends React.Component {
       return images.map((image) => (
         <StyledImage
           alt=""
-          id={image.index}
+          key={image.index}
           src={image.fullSizeURL}
         />
       ));

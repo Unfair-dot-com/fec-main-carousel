@@ -95,6 +95,7 @@ class LowerCarousel extends React.Component {
       // if so, constructs thumbnails in the carousel
       return images.map((image) => (
         <Thumbnail
+          key={image.index}
           id={image.index}
           activeIndex={activeThumbnail}
           src={image.thumbnailURL}
